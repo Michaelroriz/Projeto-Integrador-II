@@ -5,10 +5,33 @@
  */
 package Agendamento;
 
+import sun.util.calendar.LocalGregorianCalendar;
+import sun.util.calendar.LocalGregorianCalendar.Date;
+
 /**
  *
  * @author michael.aroriz
  */
 public class AgendamentoLocacao {
+    
+    private String AGID;
+    private String AGCLID;
+    private String AGVID;
+    private String AGFUNCID;
+    private Date AGHRETIRADA;
+    private Date AGHDEVOLUCAO;
+    
+    //construtor
+    public AgendamentoLocacao(String AGID, String AGCLID, String AGVID, String AGFUNCID, Date AGHRETIRADA, Date AGHDEVOLUCAO) {
+        this.AGID = AGID;
+        this.AGCLID = AGCLID;
+        this.AGVID = AGVID;
+        this.AGFUNCID = AGFUNCID;
+        this.AGHRETIRADA = AGHRETIRADA;
+        this.AGHDEVOLUCAO = AGHDEVOLUCAO;
+    }
+
+      
+    
     
 }
