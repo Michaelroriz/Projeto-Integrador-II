@@ -21,7 +21,7 @@ public class AgendamentoLocacao {
     private Date AGHRETIRADA;
     private Date AGHDEVOLUCAO;
     
-    //construtor
+    //construtorx
     public AgendamentoLocacao(String AGID, String AGCLID, String AGVID, String AGFUNCID, Date AGHRETIRADA, Date AGHDEVOLUCAO) {
         this.AGID = AGID;
         this.AGCLID = AGCLID;

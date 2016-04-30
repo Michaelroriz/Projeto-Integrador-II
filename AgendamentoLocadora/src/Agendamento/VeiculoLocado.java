@@ -11,4 +11,20 @@ package Agendamento;
  */
 public class VeiculoLocado {
     
+    private String VID;
+    private String VPLACA;
+    private String VMARCA;
+    private String VMODELO;
+
+    //construtor
+    public VeiculoLocado(String VID, String VPLACA, String VMARCA, String VMODELO) {
+        this.VID = VID;
+        this.VPLACA = VPLACA;
+        this.VMARCA = VMARCA;
+        this.VMODELO = VMODELO;
+    }
+
+    
+    
+    
 }
