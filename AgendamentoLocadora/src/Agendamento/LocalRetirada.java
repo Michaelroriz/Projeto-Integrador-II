@@ -11,4 +11,6 @@ package Agendamento;
  */
 public class LocalRetirada {
     
+    
+    
 }
