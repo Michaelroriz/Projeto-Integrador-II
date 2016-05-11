@@ -22,10 +22,12 @@ public class ConexaoDB {
     */
     
         public static Connection ConnectDB(){
+            
+            //criar conexão http://www.devmedia.com.br/classe-de-conexao-em-java-no-netbeans-driver-mysql/18804
             //C:\Users\Sergio\Documents\NetBeansProjects\Projeto-Integrador-II\AgendamentoLocadora\src\database
             try {
                 Class.forName("org.sqlite.JDBC");
-                Connection conn =  DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Sergio\\Documents\\NetBeansProjects\\Projeto-Integrador-II\\AgendamentoLocadora\\src\\database\\BDagendamento.db");
+                Connection conn =  DriverManager.getConnection("jdbc:mysql://home//sergio//NetBeansProjects//Projeto-Integrador-II//AgendamentoLocadora//src//database//BDagendamento.sql");
                 JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");
                 return conn;
             } catch (Exception e) {
