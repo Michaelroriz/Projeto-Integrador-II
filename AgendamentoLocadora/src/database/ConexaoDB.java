@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class ConexaoDB {
     
-    Connection conn = null;
+    public static Connection conn = null;
     
     /*
     Conexão do Banco de Dados SQLite
@@ -23,20 +23,23 @@ public class ConexaoDB {
     
         public static Connection ConnectDB(){
             
-            //criar conexão http://www.devmedia.com.br/classe-de-conexao-em-java-no-netbeans-driver-mysql/18804
-            //C:\Users\Sergio\Documents\NetBeansProjects\Projeto-Integrador-II\AgendamentoLocadora\src\database
+            
+            
             try {
-                Class.forName("org.sqlite.JDBC");
-                Connection conn =  DriverManager.getConnection("jdbc:mysql://home//sergio//NetBeansProjects//Projeto-Integrador-II//AgendamentoLocadora//src//database//BDagendamento.sql");
-                JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");
+                Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost:3306/DBagendamento","root","403465");
+                if (conn != null) {
+                    JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");                    
+                }
                 return conn;
             } catch (Exception e) {
-                System.out.println("Não foi possível conectar. Erro!!! [ " + e.getMessage() + "]");
+                if (conn == null) {
+                    JOptionPane.showMessageDialog(null, e);
+                }                
                 return null;
             }
     
 }
-    
+         
     
     
 }
