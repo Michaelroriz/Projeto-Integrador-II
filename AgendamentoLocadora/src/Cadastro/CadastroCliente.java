@@ -5,7 +5,7 @@
  */
 package Cadastro;
 
-import sun.util.calendar.LocalGregorianCalendar;
+import sun.util.calendar.LocalGregorianCalendar.Date;
 
 
 
@@ -15,30 +15,31 @@ import sun.util.calendar.LocalGregorianCalendar;
  */
 public class CadastroCliente {
     
-    private String CLNOME;
-    private String CLCPF;
-    private LocalGregorianCalendar.Date CLDTNASCIMENTO;
-    private char CLSEXO;
-    private String CLENDERECO;
-    private String CLNUMERO;
-    private String CLCOMPLEMENTO;
-    private String CLBAIRRO;
-    private String CLCIDADE;
-    private String CLUF;
+    private String nome;
+    private String cpf;
+    private Date datanascimento;
+    private char sexo;
+    private String endereco;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String uf;
     
     //Construtor
-    public CadastroCliente(String CLNOME, String CLCPF, LocalGregorianCalendar.Date CLDTNASCIMENTO, char CLSEXO, String CLENDERECO, String CLNUMERO, String CLCOMPLEMENTO, String CLBAIRRO, String CLCIDADE, String CLUF) {
-        this.CLNOME = CLNOME;
-        this.CLCPF = CLCPF;
-        this.CLDTNASCIMENTO = CLDTNASCIMENTO;
-        this.CLSEXO = CLSEXO;
-        this.CLENDERECO = CLENDERECO;
-        this.CLNUMERO = CLNUMERO;
-        this.CLCOMPLEMENTO = CLCOMPLEMENTO;
-        this.CLBAIRRO = CLBAIRRO;
-        this.CLCIDADE = CLCIDADE;
-        this.CLUF = CLUF;
-    }
+
+    public CadastroCliente(String nome, String cpf, Date datanascimento, char sexo, String endereco, String numero, String complemento, String bairro, String cidade, String uf) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.datanascimento = datanascimento;
+        this.sexo = sexo;
+        this.endereco = endereco;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
+    }    
     
     
     
