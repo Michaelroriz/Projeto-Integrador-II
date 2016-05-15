@@ -7,14 +7,12 @@ package Cadastro;
 
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
-
-
 /**
  *
  * @author michael.aroriz
  */
 public class CadastroCliente {
-    
+    //Atributos
     private String nome;
     private String cpf;
     private Date datanascimento;
@@ -25,9 +23,8 @@ public class CadastroCliente {
     private String bairro;
     private String cidade;
     private String uf;
-    
-    //Construtor
 
+    //Construtor
     public CadastroCliente(String nome, String cpf, Date datanascimento, char sexo, String endereco, String numero, String complemento, String bairro, String cidade, String uf) {
         this.nome = nome;
         this.cpf = cpf;
@@ -39,10 +36,50 @@ public class CadastroCliente {
         this.bairro = bairro;
         this.cidade = cidade;
         this.uf = uf;
-    }    
+    }
+    //Métodos
+    public CadastroCliente(String nome) {
+        this.nome = nome;
+    }
     
-    
-    
-    
-    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setData(Date data) {
+        this.datanascimento = datanascimento;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
 }
