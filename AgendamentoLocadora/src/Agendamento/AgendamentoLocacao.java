@@ -13,25 +13,30 @@ import sun.util.calendar.LocalGregorianCalendar.Date;
  * @author michael.aroriz
  */
 public class AgendamentoLocacao {
-    
-    private String AGID;
-    private String AGCLID;
-    private String AGVID;
-    private String AGFUNCID;
-    private Date AGHRETIRADA;
-    private Date AGHDEVOLUCAO;
-    
-    //construtorx
-    public AgendamentoLocacao(String AGID, String AGCLID, String AGVID, String AGFUNCID, Date AGHRETIRADA, Date AGHDEVOLUCAO) {
-        this.AGID = AGID;
-        this.AGCLID = AGCLID;
-        this.AGVID = AGVID;
-        this.AGFUNCID = AGFUNCID;
-        this.AGHRETIRADA = AGHRETIRADA;
-        this.AGHDEVOLUCAO = AGHDEVOLUCAO;
+
+    //Atributos
+    private Date datasaida;
+    private Date dataretorno;
+
+    //Construtor
+    public AgendamentoLocacao(Date datasaida, Date dataretorno) {
+        this.datasaida = datasaida;
+        this.dataretorno = dataretorno;
+    }
+    //Métodos
+    public Date getDatasaida() {
+        return datasaida;
     }
 
-      
-    
-    
+    public void setDatasaida(Date dataSaida) {
+        this.datasaida = datasaida;
+    }
+
+    public Date getDataretorno() {
+        return dataretorno;
+    }
+
+    public void setDataretorno(Date dataRetorno) {
+        this.dataretorno = dataretorno;
+    }
 }
