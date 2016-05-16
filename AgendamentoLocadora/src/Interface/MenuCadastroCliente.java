@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import Cadastro.CadastroCliente;
+import javax.swing.JTextField;
+
 /**
  *
  * @author michael.aroriz
@@ -61,6 +64,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
+        textNome.setText("jjj");
         textNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textNomeActionPerformed(evt);
@@ -251,7 +255,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -271,7 +275,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         System.exit(0);        
     }//GEN-LAST:event_ButtonCancelarActionPerformed
@@ -289,7 +293,9 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_textSexoActionPerformed
 
     private void textNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeActionPerformed
-        // TODO add your handling code here:
+        Cadastro.CadastroCliente ccl = new CadastroCliente(null);
+        ccl.setNome(textNome.getText());                
+        ccl.imprimirN();
     }//GEN-LAST:event_textNomeActionPerformed
 
     private void textCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCidadeActionPerformed
