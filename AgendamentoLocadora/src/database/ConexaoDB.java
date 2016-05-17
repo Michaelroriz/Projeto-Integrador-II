@@ -22,11 +22,11 @@ public class ConexaoDB {
     */
     
         public static Connection ConnectDB(){
-            
+            //jdbc:mysql://localhost:3306/DBagendamento","root","403465
             
             
             try {
-                Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost:3306/DBagendamento","root","403465");
+                Connection conn =  DriverManager.getConnection("jdbc:mysql://dbagendamento.c9kfohd9zyjr.us-east-1.rds.amazonaws.com:3306","sergiomarangoni","pi403465");
                 if (conn != null) {
                     JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");                    
                 }
@@ -37,8 +37,13 @@ public class ConexaoDB {
                 }                
                 return null;
             }
+            
+           
     
 }
+        public static void main(String[] args) {
+        ConnectDB();
+    }
          
     
     
