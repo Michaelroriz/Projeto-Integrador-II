@@ -64,7 +64,6 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
-        textNome.setText("jjj");
         textNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textNomeActionPerformed(evt);
@@ -86,6 +85,11 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        textCpfFormatted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textCpfFormattedActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Sexo:");
 
@@ -276,31 +280,41 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    static Cadastro.CadastroCliente ccl = new CadastroCliente(null, null, null, null, null, null, null, null, null, null);
+    
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
+        if(ButtonCancelar.isEnabled()){            
+            ccl.setSexo(textSexo==null);            
+            ccl.imprimirN();
+        }
         System.exit(0);        
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
 
     private void textNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNumeroActionPerformed
-        // TODO add your handling code here:
+        ccl.setNumero(textNumero.getText());
     }//GEN-LAST:event_textNumeroActionPerformed
 
     private void textSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSexoActionPerformed
-        // TODO add your handling code here:
+        ccl.setSexo(textSexo.getSelectedItem());
+        ccl.imprimirN();
+        
     }//GEN-LAST:event_textSexoActionPerformed
 
     private void textNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeActionPerformed
-        Cadastro.CadastroCliente ccl = new CadastroCliente(null);
-        ccl.setNome(textNome.getText());                
-        ccl.imprimirN();
+        ccl.setNome(textNome.getText());        
     }//GEN-LAST:event_textNomeActionPerformed
 
     private void textCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCidadeActionPerformed
-        // TODO add your handling code here:
+        ccl.setCidade(textCidade.getText());
     }//GEN-LAST:event_textCidadeActionPerformed
+
+    private void textCpfFormattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCpfFormattedActionPerformed
+        ccl.setCpf(textCpfFormatted.getText());
+    }//GEN-LAST:event_textCpfFormattedActionPerformed
 
     /**
      * @param args the command line arguments
