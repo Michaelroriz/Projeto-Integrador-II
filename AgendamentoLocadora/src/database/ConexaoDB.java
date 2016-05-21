@@ -14,37 +14,30 @@ import javax.swing.JOptionPane;
  * @author Sergio
  */
 public class ConexaoDB {
-    
+
     public static Connection conn = null;
-    
+
     /*
-    Conexão do Banco de Dados SQLite
-    */
-    
-        public static Connection ConnectDB(){
-            //jdbc:mysql://localhost:3306/DBagendamento","root","403465
-            
-            
-            try {
-                Connection conn =  DriverManager.getConnection("jdbc:mysql://dbagendamento.c9kfohd9zyjr.us-east-1.rds.amazonaws.com:3306","sergiomarangoni","pi403465");
-                if (conn != null) {
-                    JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");                    
-                }
-                return conn;
-            } catch (Exception e) {
-                if (conn == null) {
-                    JOptionPane.showMessageDialog(null, e);
-                }                
-                return null;
+     Conexão do Banco de Dados SQLite
+     */
+    public static Connection ConnectDB() {            
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://dbagendamento.c9kfohd9zyjr.us-east-1.rds.amazonaws.com:3306", "sergiomarangoni", "pi403465");
+            if (conn != null) {
+                JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");
             }
-            
-           
-    
-}
-        public static void main(String[] args) {
+            return conn;
+        } catch (Exception e) {
+            if (conn == null) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
         ConnectDB();
     }
-         
-    
-    
+
 }
