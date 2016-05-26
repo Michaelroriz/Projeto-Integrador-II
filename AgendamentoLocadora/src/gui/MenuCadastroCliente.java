@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package gui;
 
 import Cadastro.CadastroCliente;
 import javax.swing.JTextField;

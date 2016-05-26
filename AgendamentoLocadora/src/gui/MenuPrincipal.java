@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package gui;
 
 /**
  *
@@ -46,10 +46,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         treeNode1.add(treeNode2);
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jTree1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jTree1CaretPositionChanged(evt);
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jScrollPane1.setViewportView(jTree1);

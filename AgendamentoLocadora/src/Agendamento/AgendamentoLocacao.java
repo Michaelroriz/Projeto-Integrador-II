@@ -15,6 +15,7 @@ import sun.util.calendar.LocalGregorianCalendar.Date;
 public class AgendamentoLocacao {
 
     //Atributos
+    
     private Date datasaida;
     private Date dataretorno;
 
