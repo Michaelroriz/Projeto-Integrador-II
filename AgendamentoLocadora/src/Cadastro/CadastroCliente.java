@@ -47,9 +47,17 @@ public class CadastroCliente {
     public String getNome() {
         return nome;
     }
-
+    //Apenas para testes de inserção
     public void imprimirN() {
+        System.out.println(nome);
         System.out.println(sexo);
+        System.out.println(cidade);
+        System.out.println(numero);
+        System.out.println(uf);
+        System.out.println(bairro);
+        System.out.println(cpf);
+        System.out.println(complemento);
+        System.out.println(endereco);
     }
 
     public void setCpf(String cpf) {
