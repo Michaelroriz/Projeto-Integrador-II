@@ -5,6 +5,8 @@
  */
 package gui;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 /**
  *
  * @author michael.aroriz
@@ -29,30 +31,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        ButtonCadastrar = new javax.swing.JButton();
+        ButtonAgendar = new javax.swing.JButton();
+        ButtonConsultaVeiculo = new javax.swing.JButton();
+        ButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jInternalFrame1.setTitle("Locadora de Veiculos Rent A Car");
         jInternalFrame1.setVisible(true);
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Agendar Locação");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Cadastrar");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Consultar Veiculo");
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Agendar Locação");
-        treeNode1.add(treeNode2);
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jTree1.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                jTree1CaretPositionChanged(evt);
+        ButtonCadastrar.setText("Cadastrar");
+        ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCadastrarActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTree1);
+
+        ButtonAgendar.setText("Agendar Locação");
+        ButtonAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgendarActionPerformed(evt);
+            }
+        });
+
+        ButtonConsultaVeiculo.setText("Consultar Veiculo");
+        ButtonConsultaVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultaVeiculoActionPerformed(evt);
+            }
+        });
+
+        ButtonSair.setText("Sair");
+        ButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -60,15 +75,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButtonAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                    .addComponent(ButtonCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonConsultaVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(ButtonCadastrar)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonAgendar)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonConsultaVeiculo)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonSair)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
@@ -83,9 +108,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,9 +126,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTree1CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTree1CaretPositionChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTree1CaretPositionChanged
+    private void ButtonAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgendarActionPerformed
+        MenuAgendamento mag = new MenuAgendamento();
+        if(ButtonAgendar.isEnabled()){
+            mag.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonAgendarActionPerformed
+
+    private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
+        MenuCadastroCliente mcl = new MenuCadastroCliente();
+        if(ButtonCadastrar.isEnabled()){
+            mcl.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonCadastrarActionPerformed
+
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
+        if(ButtonSair.isEnabled()){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_ButtonSairActionPerformed
+
+    private void ButtonConsultaVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultaVeiculoActionPerformed
+        MenuVeiculos mv = new MenuVeiculos();
+        if(ButtonConsultaVeiculo.isEnabled()){
+            mv.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonConsultaVeiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,9 +189,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonAgendar;
+    private javax.swing.JButton ButtonCadastrar;
+    private javax.swing.JButton ButtonConsultaVeiculo;
+    private javax.swing.JButton ButtonSair;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
 }
