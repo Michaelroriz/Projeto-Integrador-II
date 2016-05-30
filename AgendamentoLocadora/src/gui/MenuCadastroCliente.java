@@ -6,6 +6,7 @@
 package gui;
 
 import Cadastro.CadastroCliente;
+import java.text.SimpleDateFormat;
 import javax.swing.JTextField;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
@@ -165,24 +166,34 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabelMsgNome.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgNome.setText("*Campo Obrigatório");
 
+        jLabelMsgSexo.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgSexo.setText("\"Campo Obrigatório");
 
+        jLabelMsgData.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgData.setText("\"Campo Obrigatório");
 
+        jLabelMsgCpf.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgCpf.setText("\"Campo Obrigatório");
 
+        jLabelMsgEndereco.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgEndereco.setText("\"Campo Obrigatório");
 
+        jLabelMsgNumero.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgNumero.setText("\"Campo Obrigatório");
 
+        jLabelMsgComplemento.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgComplemento.setText("\"Campo Obrigatório");
 
+        jLabelMsgBairro.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgBairro.setText("\"Campo Obrigatório");
 
+        jLabelMsgCidade.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgCidade.setText("\"Campo Obrigatório");
 
+        jLabelMsgUF.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgUF.setText("\"Campo Obrigatório");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -339,7 +350,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonCancelar)
                     .addComponent(ButtonCadastrar))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
@@ -353,9 +364,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -366,9 +375,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -397,8 +404,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
-        String g = "*Campo(s) nao preenchido(s)";
-        MenuCadastroCliente mcl = new MenuCadastroCliente();
+        
         //Variável necessária para verificação de campos preenchidos
         int j = 0;
         if (ButtonCadastrar.isEnabled()) {
@@ -475,34 +481,41 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             ccl.setUf(textUF.getText());
             ccl.setBairro(textBairro.getText());
             ccl.setComplemento(textComplemento.getText());
+            /*
+            //////////////////////////////////////////////////////////////////////////////////////
             // ARRUMAR DATA ( ELE NÃO CONVERTE PARA STRING )
+            SimpleDateFormat formato = new SimpleDateFormat("##/##/####");
+            String data = textDataFormatted.getText();
+            //Date dataFormatada = formato.parse(data);
+
             //ccl.setData(textDataFormatted.getText();
-            
+            ///////////////////////////////////////////////////////////////////////////////////////
+            */
             //fecha a janela de Cadastro e volta para o menu principal          
             this.dispose();
             new MenuPrincipal().setVisible(true);
-        }        
+        }
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
 
 
     private void textNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNumeroActionPerformed
-        
+
     }//GEN-LAST:event_textNumeroActionPerformed
 
     private void textSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSexoActionPerformed
-        
+
     }//GEN-LAST:event_textSexoActionPerformed
 
     private void textNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeActionPerformed
-        
+
     }//GEN-LAST:event_textNomeActionPerformed
 
     private void textCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCidadeActionPerformed
-        
+
     }//GEN-LAST:event_textCidadeActionPerformed
 
     private void textCpfFormattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCpfFormattedActionPerformed
-        
+
     }//GEN-LAST:event_textCpfFormattedActionPerformed
 
     private void textDataFormattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDataFormattedActionPerformed
