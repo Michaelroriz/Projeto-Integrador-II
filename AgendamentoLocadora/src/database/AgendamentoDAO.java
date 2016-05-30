@@ -20,7 +20,7 @@ public class AgendamentoDAO {
         ConexaoDB.ConnectDB();
         
         try {
-            acesso.executeUpdate("insert into Agendamento()'"+agendamento.getDatasaida()+"','"+agendamento.getDataretorno()+ "';'");
+            acesso.executeUpdate("insert into Agendamento()'" +agendamento.getPais()+ "','" +agendamento.getCidade()+"','"+agendamento.getLocal()+ "','" +agendamento.getDatasaida()+ "','"+agendamento.getHoraSaida()+ "','" +agendamento.getDataretorno()+ "','"+agendamento.getHoraRetorno()+"';'");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Não foi possível inserir os dados. Falha no acesso ao Banco de Dados");
         }  
