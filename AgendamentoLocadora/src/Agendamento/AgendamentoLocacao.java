@@ -19,7 +19,7 @@ public class AgendamentoLocacao {
 
     //Atributos
     
-    private Time horasaida;
+    private Date horasaida;
     private Date datasaida;
     private Date dataretorno;
     private Date horaretorno;
@@ -28,7 +28,7 @@ public class AgendamentoLocacao {
     private String local;
 
     //Construtor
-    public AgendamentoLocacao(Date datasaida, Date dataretorno, Time horasaida, Date horaretorno, String pais, String cidade, String local) {
+    public AgendamentoLocacao(Date datasaida, Date dataretorno, Date horasaida, Date horaretorno, String pais, String cidade, String local) {
         this.datasaida = datasaida;
         this.dataretorno = dataretorno;
         this.horasaida = horasaida;
@@ -58,11 +58,11 @@ public class AgendamentoLocacao {
 
     //////////////////////////////////////////////////////////////
 
-    public void setHorasaida(Time horaSaida) {
+    public void setHorasaida(Date horaSaida) {
         this.horasaida = horasaida;
     }
 
-    public Time getHoraSaida() {
+    public Date getHoraSaida() {
         return horasaida;
     }
 
