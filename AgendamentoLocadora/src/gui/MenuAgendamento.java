@@ -5,6 +5,13 @@
  */
 package gui;
 
+import Agendamento.AgendamentoLocacao;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
+import sun.util.calendar.LocalGregorianCalendar.Date;
+
 /**
  *
  * @author michael.aroriz
@@ -16,6 +23,12 @@ public class MenuAgendamento extends javax.swing.JFrame {
      */
     public MenuAgendamento() {
         initComponents();
+        jLabelMsgCidade.setVisible(false);
+        jLabelMsgDataDev.setVisible(false);
+        jLabelMsgDataRet.setVisible(false);
+        jLabelMsgLocal.setVisible(false);
+        jLabelMsgPais.setVisible(false);
+        jLabelMsgSelectIdade.setVisible(false);
     }
 
     /**
@@ -29,22 +42,252 @@ public class MenuAgendamento extends javax.swing.JFrame {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        textPais = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        textCidade = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        textLocal = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        textDataRetFormatted = new javax.swing.JFormattedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        textHoraRet = new javax.swing.JComboBox();
+        textMinRet = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
+        textDataDevFormatted = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        textHoraDev = new javax.swing.JComboBox();
+        textMinDev = new javax.swing.JComboBox();
+        checkBoxIdade = new javax.swing.JCheckBox();
+        ButtonCancelar = new javax.swing.JButton();
+        ButtonConcluir = new javax.swing.JButton();
+        jLabelMsgPais = new javax.swing.JLabel();
+        jLabelMsgCidade = new javax.swing.JLabel();
+        jLabelMsgLocal = new javax.swing.JLabel();
+        jLabelMsgDataRet = new javax.swing.JLabel();
+        jLabelMsgDataDev = new javax.swing.JLabel();
+        jLabelMsgSelectIdade = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jInternalFrame1.setTitle("Agendamento");
         jInternalFrame1.setVisible(true);
 
         jPanel1.setName("\n"); // NOI18N
+
+        jLabel1.setText("País:");
+
+        jLabel2.setText("Cidade:");
+
+        textCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textCidadeActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Local:");
+
+        jLabel4.setText("*devolver veículo no mesmo local");
+
+        jLabel5.setText("Data de retirada:");
+
+        try {
+            textDataRetFormatted.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        textDataRetFormatted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textDataRetFormattedActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Hora:");
+
+        textHoraRet.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"00", "01", "02", "03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"}));
+        textHoraRet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textHoraRetActionPerformed(evt);
+            }
+        });
+
+        textMinRet.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"00", "30" }));
+        textMinRet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textMinRetActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Data de Devolução:");
+
+        try {
+            textDataDevFormatted.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel8.setText("Hora:");
+
+        textHoraDev.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23" }));
+
+        textMinDev.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "30" }));
+
+        checkBoxIdade.setText("Condutor acima de 18 anos");
+        checkBoxIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxIdadeActionPerformed(evt);
+            }
+        });
+
+        ButtonCancelar.setText("Cancelar");
+        ButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        ButtonConcluir.setText("Concluir");
+        ButtonConcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConcluirActionPerformed(evt);
+            }
+        });
+
+        jLabelMsgPais.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelMsgPais.setText("*Campo obrigatório");
+
+        jLabelMsgCidade.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelMsgCidade.setText("*Campo obrigatório");
+
+        jLabelMsgLocal.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelMsgLocal.setText("*Campo obrigatório");
+
+        jLabelMsgDataRet.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelMsgDataRet.setText("*Campo obrigatório");
+
+        jLabelMsgDataDev.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelMsgDataDev.setText("*Campo obrigatório");
+
+        jLabelMsgSelectIdade.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelMsgSelectIdade.setText("*Campo obrigatório");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 374, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(textLocal))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(textDataDevFormatted)
+                                .addComponent(textDataRetFormatted)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                            .addGap(121, 121, 121)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(91, 91, 91)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textPais))
+                        .addComponent(jLabelMsgPais)
+                        .addComponent(jLabelMsgCidade)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabelMsgLocal)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabelMsgDataRet)
+                    .addComponent(jLabelMsgDataDev))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ButtonCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonConcluir))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabelMsgSelectIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(checkBoxIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(textPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelMsgPais)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(textCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelMsgCidade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(textLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(jLabelMsgLocal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textDataRetFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelMsgDataRet)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textDataDevFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelMsgDataDev)
+                .addGap(18, 18, 18)
+                .addComponent(checkBoxIdade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelMsgSelectIdade)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonCancelar)
+                    .addComponent(ButtonConcluir)))
         );
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
@@ -60,8 +303,8 @@ public class MenuAgendamento extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleDescription("ggg");
@@ -79,6 +322,107 @@ public class MenuAgendamento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    static AgendamentoLocacao mag = new AgendamentoLocacao(null, null, null, null, null, null, null);
+    
+    private void textDataRetFormattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDataRetFormattedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textDataRetFormattedActionPerformed
+
+    private void checkBoxIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxIdadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxIdadeActionPerformed
+
+    private void textCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textCidadeActionPerformed
+
+    private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
+        this.dispose();
+        new MenuPrincipal().setVisible(true);
+    }//GEN-LAST:event_ButtonCancelarActionPerformed
+
+    private void ButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConcluirActionPerformed
+        
+        //Variável necessária para verificação de campos preenchidos
+        int j=0;
+        if (ButtonConcluir.isEnabled()) {
+            //Condição para identificar campos não preenchidos
+            if (textPais.getText().isEmpty()) {
+                jLabelMsgPais.setVisible(true);
+            } else {
+                jLabelMsgPais.setVisible(false);
+                j++;
+            }
+            if (textCidade.getText().isEmpty()) {
+                jLabelMsgCidade.setVisible(true);
+            } else {
+                jLabelMsgCidade.setVisible(false);
+                j++;
+            }
+            if (textLocal.getText().isEmpty()) {
+                jLabelMsgLocal.setVisible(true);
+            } else {
+                jLabelMsgLocal.setVisible(false);
+                j++;
+            }
+            if (textDataRetFormatted.getText().equals("  /  /    ")) {
+                jLabelMsgDataRet.setVisible(true);
+            } else {
+                jLabelMsgDataRet.setVisible(false);
+                j++;
+            }
+            if (textDataDevFormatted.getText().equals("  /  /    ")) {
+                jLabelMsgDataDev.setVisible(true);
+            } else {
+                jLabelMsgDataDev.setVisible(false);
+                j++;
+            }
+            if (checkBoxIdade.isSelected()) {
+                jLabelMsgSelectIdade.setVisible(false);
+                j++;
+            } else {
+                jLabelMsgSelectIdade.setVisible(true);               
+            }
+           
+        }        
+        //Se todos os campos estiverem preenchidos, os dados são armazenados
+        if (ButtonConcluir.isEnabled() && j == 6) { 
+            mag.setCidade(textCidade.getText());
+            mag.setLocal(textLocal.getText());
+            mag.setPais(textPais.getText());
+            //Concatenar duas strings para Int
+            String horadev=textHoraDev.toString();
+            String mindev=textMinDev.toString();
+            String horariodev = horadev + "" + mindev;
+           
+            String horaret=textHoraDev.toString();
+            String minret=textMinDev.toString();
+            String horarioret = horaret + "" + minret;
+            //Integer.parseInt(s);
+            
+            
+            /*
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+            mag.setDataretorno(textDataDevFormatted.getText());
+            mag.setDatasaida(textDataRetFormatted.getText());
+            Converter Object para data
+            mag.setHorasaida(textHoraRet.getSelectedItem());
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+            */
+            //fecha a janela de Cadastro e volta para o menu principal    
+            this.dispose();
+            new MenuPrincipal().setVisible(true);
+        }        
+        
+    }//GEN-LAST:event_ButtonConcluirActionPerformed
+
+    private void textHoraRetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textHoraRetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textHoraRetActionPerformed
+
+    private void textMinRetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMinRetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textMinRetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,7 +460,33 @@ public class MenuAgendamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonCancelar;
+    private javax.swing.JButton ButtonConcluir;
+    private javax.swing.JCheckBox checkBoxIdade;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelMsgCidade;
+    private javax.swing.JLabel jLabelMsgDataDev;
+    private javax.swing.JLabel jLabelMsgDataRet;
+    private javax.swing.JLabel jLabelMsgLocal;
+    private javax.swing.JLabel jLabelMsgPais;
+    private javax.swing.JLabel jLabelMsgSelectIdade;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField textCidade;
+    private javax.swing.JFormattedTextField textDataDevFormatted;
+    private javax.swing.JFormattedTextField textDataRetFormatted;
+    private javax.swing.JComboBox textHoraDev;
+    private javax.swing.JComboBox textHoraRet;
+    private javax.swing.JTextField textLocal;
+    private javax.swing.JComboBox textMinDev;
+    private javax.swing.JComboBox textMinRet;
+    private javax.swing.JTextField textPais;
     // End of variables declaration//GEN-END:variables
 }
