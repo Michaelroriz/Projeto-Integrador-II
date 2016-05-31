@@ -6,8 +6,11 @@
 package gui;
 
 import Cadastro.CadastroCliente;
+import com.toedter.calendar.JDateChooser;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
@@ -236,9 +239,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, 0)
-                                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textCpfFormatted)
@@ -474,13 +475,13 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             ccl.setEndereco(textEndereco.getText());
             ccl.setUf(textUF.getText());
             ccl.setBairro(textBairro.getText());
-            ccl.setComplemento(textComplemento.getText());                            
-            ccl.setTime(jDate.getDate());
+            ccl.setComplemento(textComplemento.getText()); 
+            ccl.setData(jDate.getDate());
+            final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
             ccl.imprimirN();
             
             
-            
-            ///////////////////////////////////////////////////////////////////////////////////////
+                                    
             
             //fecha a janela de Cadastro e volta para o menu principal          
             this.dispose();
@@ -580,4 +581,6 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox textSexo;
     private javax.swing.JTextField textUF;
     // End of variables declaration//GEN-END:variables
+
+    
 }
