@@ -5,7 +5,10 @@
  */
 package Cadastro;
 
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
+
+
+
 
 /**
  *
@@ -58,6 +61,7 @@ public class CadastroCliente {
         System.out.println(cpf);
         System.out.println(complemento);
         System.out.println(endereco);
+        System.out.println(datanascimento);
     }
 
     public void setCpf(String cpf) {
@@ -68,11 +72,12 @@ public class CadastroCliente {
         return cpf;
     }
 
-    public void setData(Date data) {
+    public void setTime(Date data) {
         this.datanascimento = datanascimento;
+        
     }
 
-    public Date getData() {
+    public Date getTime() {
         return datanascimento;
     }    
     
