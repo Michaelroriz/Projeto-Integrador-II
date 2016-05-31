@@ -6,7 +6,10 @@
 package gui;
 
 import Cadastro.CadastroCliente;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 import sun.util.calendar.LocalGregorianCalendar.Date;
 
@@ -48,7 +51,6 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         textNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        textDataFormatted = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         textCpfFormatted = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -77,6 +79,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         jLabelMsgBairro = new javax.swing.JLabel();
         jLabelMsgCidade = new javax.swing.JLabel();
         jLabelMsgUF = new javax.swing.JLabel();
+        jDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,17 +97,6 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Data de Nascimento:");
-
-        try {
-            textDataFormatted.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        textDataFormatted.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textDataFormattedActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("CPF:");
 
@@ -244,7 +236,9 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(textDataFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, 0)
+                                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textCpfFormatted)
@@ -303,9 +297,9 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDataFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textCpfFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textCpfFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMsgData)
@@ -392,7 +386,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             textCidade = null;
             textComplemento = null;
             textCpfFormatted = null;
-            textDataFormatted = null;
+            jDate = null;
             textEndereco = null;
             textNumero = null;
             textSexo = null;
@@ -421,7 +415,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                 jLabelMsgSexo.setVisible(false);
                 j++;
             }
-            if (textDataFormatted.getText().equals("  /  /    ")) {
+            if (jDate.getDateEditor() == null){
                 jLabelMsgData.setVisible(true);
             } else {
                 jLabelMsgData.setVisible(false);
@@ -480,17 +474,14 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             ccl.setEndereco(textEndereco.getText());
             ccl.setUf(textUF.getText());
             ccl.setBairro(textBairro.getText());
-            ccl.setComplemento(textComplemento.getText());
-            /*
-            //////////////////////////////////////////////////////////////////////////////////////
-            // ARRUMAR DATA ( ELE NÃO CONVERTE PARA STRING )
-            SimpleDateFormat formato = new SimpleDateFormat("##/##/####");
-            String data = textDataFormatted.getText();
-            //Date dataFormatada = formato.parse(data);
-
-            //ccl.setData(textDataFormatted.getText();
+            ccl.setComplemento(textComplemento.getText());                            
+            ccl.setTime(jDate.getDate());
+            ccl.imprimirN();
+            
+            
+            
             ///////////////////////////////////////////////////////////////////////////////////////
-            */
+            
             //fecha a janela de Cadastro e volta para o menu principal          
             this.dispose();
             new MenuPrincipal().setVisible(true);
@@ -517,10 +508,6 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     private void textCpfFormattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCpfFormattedActionPerformed
 
     }//GEN-LAST:event_textCpfFormattedActionPerformed
-
-    private void textDataFormattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDataFormattedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textDataFormattedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -560,6 +547,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCadastrar;
     private javax.swing.JButton ButtonCancelar;
+    private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -586,7 +574,6 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField textCidade;
     private javax.swing.JTextField textComplemento;
     private javax.swing.JFormattedTextField textCpfFormatted;
-    private javax.swing.JFormattedTextField textDataFormatted;
     private javax.swing.JTextField textEndereco;
     private javax.swing.JTextField textNome;
     private javax.swing.JTextField textNumero;
