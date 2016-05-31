@@ -20,7 +20,7 @@ public class ClienteDAO {
         ConexaoDB.ConnectDB();
         
         try {
-            acesso.executeUpdate("insert into CLIENTE(nome,cpf,datadenascimento,sexo,endereco,complemento,bairro,cidade,uf values)'"+cliente.getNome()+"','" +cliente.getCpf()+"','"+cliente.getData()+"','"+cliente.getSexo()+"','"+cliente.getEndereco()+"','"+cliente.getComplemento()+"','"+cliente.getBairro()+"','"+cliente.getCidade()+"','"+cliente.getUf()+"';'");
+            acesso.executeUpdate("insert into CLIENTE(nome,cpf,datadenascimento,sexo,endereco,complemento,bairro,cidade,uf values)'"+cliente.getNome()+"','" +cliente.getCpf()+"','"+cliente.getTime()+"','"+cliente.getSexo()+"','"+cliente.getEndereco()+"','"+cliente.getComplemento()+"','"+cliente.getBairro()+"','"+cliente.getCidade()+"','"+cliente.getUf()+"';'");
         } catch (Exception e) {
         }
         
