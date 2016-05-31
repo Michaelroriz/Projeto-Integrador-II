@@ -5,6 +5,7 @@
  */
 package Cadastro;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -72,12 +73,12 @@ public class CadastroCliente {
         return cpf;
     }
 
-    public void setTime(Date data) {
-        this.datanascimento = datanascimento;
-        
+    public void setData(Date datanascimento) {        
+        this.datanascimento = datanascimento;        
     }
 
-    public Date getTime() {
+    public Date getData() {
+        
         return datanascimento;
     }    
     
@@ -145,5 +146,7 @@ public class CadastroCliente {
     public String getUf() {
         return uf;
     }
+
+    
     
 }
