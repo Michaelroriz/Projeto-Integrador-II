@@ -5,9 +5,11 @@
  */
 package database;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -15,21 +17,24 @@ import javax.swing.JOptionPane;
  */
 public class ConexaoDB {
 
-    public static Connection conn = null;
+    public static Connection connection = null;
 
     /*
-     Conexão do Banco de Dados SQLite
+     Conexão do Banco de Dados MySql
      */
-    public static Connection ConnectDB() {            
-
+    public static Connection ConnectDB() {
+        Class.forName("sun.jdbc.odbc.JdbcObdcDriver");
+        //Realiza teste de conexão ao Banco de Dados
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://dbagendamento.c9kfohd9zyjr.us-east-1.rds.amazonaws.com:3306", "sergiomarangoni", "pi403465");
-            if (conn != null) {
+            Connection connection = DriverManager.getConnection("jdbc:mysql//localhost/DBagendamento","root","1234");
+
+            if (connection != null) {
                 JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");
             }
-            return conn;
+            return connection;
+            //Retorno de mensagem de erro caso ocorra erro durante a conexão.
         } catch (Exception e) {
-            if (conn == null) {
+            if (connection == null) {
                 JOptionPane.showMessageDialog(null, e);
             }
             return null;
