@@ -23,10 +23,12 @@ public class ConexaoDB {
      Conexão do Banco de Dados MySql
      */
     public static Connection ConnectDB() {
-        Class.forName("sun.jdbc.odbc.JdbcObdcDriver");
+        
         //Realiza teste de conexão ao Banco de Dados
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql//localhost/DBagendamento","root","1234");
+            
 
             if (connection != null) {
                 JOptionPane.showMessageDialog(null, "Conexão Estabelecida com o Banco de Dados");
