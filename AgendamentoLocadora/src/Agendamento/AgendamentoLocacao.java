@@ -5,11 +5,7 @@
  */
 package Agendamento;
 
-import java.sql.Time;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import sun.util.calendar.LocalGregorianCalendar;
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
 
 /**
  *
@@ -39,12 +35,12 @@ public class AgendamentoLocacao {
     }
 
     //Métodos
-
+    
     public Date getDatasaida() {
         return datasaida;
     }
 
-    public void setDatasaida(Date dataSaida) {
+    public void setDatasaida(Date datasaida) {
         this.datasaida = datasaida;
     }
 
@@ -52,13 +48,11 @@ public class AgendamentoLocacao {
         return dataretorno;
     }
 
-    public void setDataretorno(Date dataRetorno) {
+    public void setDataretorno(Date dataretorno) {
         this.dataretorno = dataretorno;
-    }
+    }    
 
-    //////////////////////////////////////////////////////////////
-
-    public void setHorasaida(Date horaSaida) {
+    public void setHorasaida(Date horasaida) {
         this.horasaida = horasaida;
     }
 
@@ -66,7 +60,7 @@ public class AgendamentoLocacao {
         return horasaida;
     }
 
-    public void setHoraRetorno(Date horaRetorno) {
+    public void setHoraRetorno(Date horaretorno) {
         this.horaretorno = horaretorno;
     }
 
@@ -96,5 +90,15 @@ public class AgendamentoLocacao {
 
     public String getLocal() {
         return local;
+    }
+    //Apenas para testes de inserção
+    public void imprimi() {
+        System.out.println(datasaida);
+        System.out.println(dataretorno);
+        //System.out.println(horasaida);
+        //System.out.println(horaretorno);
+        System.out.println(pais);
+        System.out.println(cidade);
+        System.out.println(local);
     }
 }
