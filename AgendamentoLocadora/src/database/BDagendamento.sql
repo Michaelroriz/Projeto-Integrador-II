@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS FUNCIONARIO (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `VEICULO` (
   `codigo` INT INTEGER,
-  `placa` VARCHAR(7) NOT NULL,
+  `placa` VARCHAR(7) UNIQUE NOT NULL,
   `marca` VARCHAR(20) NOT NULL,
   `modelo` VARCHAR(20) NOT NULL,
   `status_codigo` INT NOT NULL,
