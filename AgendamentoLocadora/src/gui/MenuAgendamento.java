@@ -10,7 +10,7 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
 
 /**
  *
@@ -29,6 +29,7 @@ public class MenuAgendamento extends javax.swing.JFrame {
         jLabelMsgLocal.setVisible(false);
         jLabelMsgPais.setVisible(false);
         jLabelMsgSelectIdade.setVisible(false);
+        jLabelMsgDateValido.setVisible(false);
     }
 
     /**
@@ -50,12 +51,10 @@ public class MenuAgendamento extends javax.swing.JFrame {
         textLocal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        textDataRetFormatted = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         textHoraRet = new javax.swing.JComboBox();
         textMinRet = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
-        textDataDevFormatted = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         textHoraDev = new javax.swing.JComboBox();
         textMinDev = new javax.swing.JComboBox();
@@ -68,6 +67,9 @@ public class MenuAgendamento extends javax.swing.JFrame {
         jLabelMsgDataRet = new javax.swing.JLabel();
         jLabelMsgDataDev = new javax.swing.JLabel();
         jLabelMsgSelectIdade = new javax.swing.JLabel();
+        jLabelMsgDateValido = new javax.swing.JLabel();
+        jDateRetirada = new com.toedter.calendar.JDateChooser();
+        jDateDevolucao = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,17 +94,6 @@ public class MenuAgendamento extends javax.swing.JFrame {
 
         jLabel5.setText("Data de retirada:");
 
-        try {
-            textDataRetFormatted.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        textDataRetFormatted.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textDataRetFormattedActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("Hora:");
 
         textHoraRet.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"00", "01", "02", "03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"}));
@@ -120,12 +111,6 @@ public class MenuAgendamento extends javax.swing.JFrame {
         });
 
         jLabel7.setText("Data de Devolução:");
-
-        try {
-            textDataDevFormatted.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         jLabel8.setText("Hora:");
 
@@ -172,52 +157,56 @@ public class MenuAgendamento extends javax.swing.JFrame {
         jLabelMsgSelectIdade.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgSelectIdade.setText("*Campo obrigatório");
 
+        jLabelMsgDateValido.setText("*Data de devolução deve ser maior que data de retirada");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(textLocal))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textDataDevFormatted)
-                                .addComponent(textDataRetFormatted)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
-                            .addGap(121, 121, 121)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(91, 91, 91)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textLocal))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(jDateRetirada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateDevolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(121, 121, 121)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(textPais))
-                        .addComponent(jLabelMsgPais)
-                        .addComponent(jLabelMsgCidade)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(textCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addGap(91, 91, 91)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textPais))
+                    .addComponent(jLabelMsgPais)
+                    .addComponent(jLabelMsgCidade)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelMsgLocal)
                     .addComponent(jLabel4)
                     .addComponent(jLabelMsgDataRet)
-                    .addComponent(jLabelMsgDataDev))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelMsgDataDev)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelMsgDateValido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -263,10 +252,11 @@ public class MenuAgendamento extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDataRetFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelMsgDataRet)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,12 +264,15 @@ public class MenuAgendamento extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textDataDevFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelMsgDataDev)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMsgDataDev)
+                    .addComponent(jLabelMsgDateValido))
                 .addGap(18, 18, 18)
                 .addComponent(checkBoxIdade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -324,10 +317,6 @@ public class MenuAgendamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     static AgendamentoLocacao mag = new AgendamentoLocacao(null, null, null, null, null, null, null);
     
-    private void textDataRetFormattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDataRetFormattedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textDataRetFormattedActionPerformed
-
     private void checkBoxIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxIdadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxIdadeActionPerformed
@@ -365,16 +354,16 @@ public class MenuAgendamento extends javax.swing.JFrame {
                 jLabelMsgLocal.setVisible(false);
                 j++;
             }
-            if (textDataRetFormatted.getText().equals("  /  /    ")) {
-                jLabelMsgDataRet.setVisible(true);
+            if (jDateRetirada.getJCalendar().isValid()) {
+                jLabelMsgDataRet.setVisible(false);                
             } else {
-                jLabelMsgDataRet.setVisible(false);
+                jLabelMsgDataRet.setVisible(true); 
                 j++;
             }
-            if (textDataDevFormatted.getText().equals("  /  /    ")) {
-                jLabelMsgDataDev.setVisible(true);
+            if (jDateDevolucao.getJCalendar().isValid()) {
+                jLabelMsgDataDev.setVisible(false);                
             } else {
-                jLabelMsgDataDev.setVisible(false);
+                jLabelMsgDataDev.setVisible(true);
                 j++;
             }
             if (checkBoxIdade.isSelected()) {
@@ -383,13 +372,27 @@ public class MenuAgendamento extends javax.swing.JFrame {
             } else {
                 jLabelMsgSelectIdade.setVisible(true);               
             }
-           
+            //Comparar duas datas
+            Calendar calRet=jDateRetirada.getCalendar();
+            Calendar calDev=jDateDevolucao.getCalendar();
+            
+            if(calRet.compareTo(calDev)==0||calRet.compareTo(calDev)==1){
+                jLabelMsgDateValido.setVisible(true);
+            }else if(calRet.compareTo(calDev)==-1){
+                jLabelMsgDateValido.setVisible(false);           
+                j++;
+            }
         }        
         //Se todos os campos estiverem preenchidos, os dados são armazenados
-        if (ButtonConcluir.isEnabled() && j == 6) { 
+        if (ButtonConcluir.isEnabled() && j == 7) { 
             mag.setCidade(textCidade.getText());
             mag.setLocal(textLocal.getText());
             mag.setPais(textPais.getText());
+            mag.setDataretorno(jDateDevolucao.getDate());
+            mag.setDatasaida(jDateRetirada.getDate());            
+            
+            mag.imprimi();
+            
             //Concatenar duas strings para Int
             String horadev=textHoraDev.toString();
             String mindev=textMinDev.toString();
@@ -398,21 +401,16 @@ public class MenuAgendamento extends javax.swing.JFrame {
             String horaret=textHoraDev.toString();
             String minret=textMinDev.toString();
             String horarioret = horaret + "" + minret;
-            //Integer.parseInt(s);
             
             
-            /*
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-            mag.setDataretorno(textDataDevFormatted.getText());
-            mag.setDatasaida(textDataRetFormatted.getText());
-            Converter Object para data
-            mag.setHorasaida(textHoraRet.getSelectedItem());
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-            */
+            
+            
             //fecha a janela de Cadastro e volta para o menu principal    
             this.dispose();
             new MenuPrincipal().setVisible(true);
         }        
+        
+             
         
     }//GEN-LAST:event_ButtonConcluirActionPerformed
 
@@ -463,6 +461,8 @@ public class MenuAgendamento extends javax.swing.JFrame {
     private javax.swing.JButton ButtonCancelar;
     private javax.swing.JButton ButtonConcluir;
     private javax.swing.JCheckBox checkBoxIdade;
+    private com.toedter.calendar.JDateChooser jDateDevolucao;
+    private com.toedter.calendar.JDateChooser jDateRetirada;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -475,13 +475,12 @@ public class MenuAgendamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMsgCidade;
     private javax.swing.JLabel jLabelMsgDataDev;
     private javax.swing.JLabel jLabelMsgDataRet;
+    private javax.swing.JLabel jLabelMsgDateValido;
     private javax.swing.JLabel jLabelMsgLocal;
     private javax.swing.JLabel jLabelMsgPais;
     private javax.swing.JLabel jLabelMsgSelectIdade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textCidade;
-    private javax.swing.JFormattedTextField textDataDevFormatted;
-    private javax.swing.JFormattedTextField textDataRetFormatted;
     private javax.swing.JComboBox textHoraDev;
     private javax.swing.JComboBox textHoraRet;
     private javax.swing.JTextField textLocal;
