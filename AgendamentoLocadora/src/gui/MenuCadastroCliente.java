@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import java.util.Date;
 
 /**
  *
@@ -82,7 +82,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         jLabelMsgBairro = new javax.swing.JLabel();
         jLabelMsgCidade = new javax.swing.JLabel();
         jLabelMsgUF = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -239,7 +239,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(textCpfFormatted)
@@ -300,7 +300,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textCpfFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMsgData)
@@ -387,7 +387,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             textCidade = null;
             textComplemento = null;
             textCpfFormatted = null;
-            jDateChooser1 = null;
+            jDate = null;
             textEndereco = null;
             textNumero = null;
             textSexo = null;
@@ -400,7 +400,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
 
     private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
         
-        //Variável necessária para verificação de campos preenchidos
+         //Variável necessária para verificação de campos preenchidos
         int j = 0;
         if (ButtonCadastrar.isEnabled()) {
             //Condição para identificar campos não preenchidos
@@ -416,10 +416,10 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                 jLabelMsgSexo.setVisible(false);
                 j++;
             }
-            if (jDateChooser1.getDateEditor() == null){
-                jLabelMsgData.setVisible(true);
-            } else {
+            if (jDate.getJCalendar().isValid()){
                 jLabelMsgData.setVisible(false);
+            } else {
+                jLabelMsgData.setVisible(true);
                 j++;
             }
             if (textCpfFormatted.getText().equals("   .   .   -  ")) {
@@ -467,8 +467,6 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         }
         //Se todos os campos estiverem preenchidos, os dados são armazenados
         if (ButtonCadastrar.isEnabled() && j == 10) {
-            database.ClienteDAO(textNome,textSexo,jDateChooser1,textCpfFormatted,textEndereco,textBairro,textCidade,textUF);
-            
             ccl.setNumero(textNumero.getText());
             ccl.setSexo(textSexo.getSelectedItem());
             ccl.setNome(textNome.getText());
@@ -478,7 +476,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             ccl.setUf(textUF.getText());
             ccl.setBairro(textBairro.getText());
             ccl.setComplemento(textComplemento.getText()); 
-            ccl.setData(jDateChooser1.getDate());
+            ccl.setData(jDate.getDate());
             final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
             ccl.imprimirN();
             
@@ -550,7 +548,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCadastrar;
     private javax.swing.JButton ButtonCancelar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
