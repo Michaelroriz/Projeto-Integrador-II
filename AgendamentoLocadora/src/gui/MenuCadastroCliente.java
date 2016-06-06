@@ -387,7 +387,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             textCidade = null;
             textComplemento = null;
             textCpfFormatted = null;
-            jDate = null;
+            jDateChooser1 = null;
             textEndereco = null;
             textNumero = null;
             textSexo = null;
@@ -416,7 +416,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
                 jLabelMsgSexo.setVisible(false);
                 j++;
             }
-            if (jDate.getDateEditor() == null){
+            if (jDateChooser1.getDateEditor() == null){
                 jLabelMsgData.setVisible(true);
             } else {
                 jLabelMsgData.setVisible(false);
@@ -467,6 +467,8 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         }
         //Se todos os campos estiverem preenchidos, os dados são armazenados
         if (ButtonCadastrar.isEnabled() && j == 10) {
+            database.ClienteDAO(textNome,textSexo,jDateChooser1,textCpfFormatted,textEndereco,textBairro,textCidade,textUF);
+            
             ccl.setNumero(textNumero.getText());
             ccl.setSexo(textSexo.getSelectedItem());
             ccl.setNome(textNome.getText());
@@ -476,7 +478,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             ccl.setUf(textUF.getText());
             ccl.setBairro(textBairro.getText());
             ccl.setComplemento(textComplemento.getText()); 
-            ccl.setData(jDate.getDate());
+            ccl.setData(jDateChooser1.getDate());
             final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
             ccl.imprimirN();
             
