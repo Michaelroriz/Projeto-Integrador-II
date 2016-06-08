@@ -5,7 +5,10 @@
  */
 package database;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,17 +17,36 @@ import javax.swing.JOptionPane;
  */
 public class AgendamentoDAO {
 
+    //Acesso ao metodo agendamentoDAO
+    AgendamentoDAO agendamento = new AgendamentoDAO();
+
     private Statement acesso;
-    
-    public void Agendamento(Agendamento.AgendamentoLocacao agendamento){
-        ConexaoDB.ConnectDB();
+
+    public void Agendamento(Agendamento.AgendamentoLocacao agendamento) {
+
+        Conexao.conectar();
+
+        Vector<AgendamentoDAO> entradas = new Vector<AgendamentoDAO>();
+
+        ResultSet rs;
         
         try {
-            acesso.executeUpdate("insert into Agendamento()'" +agendamento.getPais()+ "','" +agendamento.getCidade()+"','"+agendamento.getLocal()+ "','" +agendamento.getDatasaida()+ "','"+agendamento.getHoraSaida()+ "','" +agendamento.getDataretorno()+ "','"+agendamento.getHoraRetorno()+"';'");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível inserir os dados. Falha no acesso ao Banco de Dados");
-        }  
-    
-}
+            acesso.executeUpdate("insert into AGENDAMENTO");
+            while (rs.next()) {
+                agendamento.setPais(pais);
+                agendamento.setCidade(cidade);
+                agendamento.setLocal(local);
+                agendamento.setDatasaida(datasaida);
+                agendamento.setDatasaida(datasaida);
+                agendamento.setDataretorno(dataretorno);
+                agendamento.setHoraRetorno(horaretorno);
+                               
+            }
+                    
+        } catch (SQLException e) {
+            Conexao.imprimeErro("Erro de Conexão", msgErro);
+        }
+    }
+
 }
 
