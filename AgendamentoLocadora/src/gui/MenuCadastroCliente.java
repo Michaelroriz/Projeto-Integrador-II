@@ -467,18 +467,24 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         }
         //Se todos os campos estiverem preenchidos, os dados são armazenados
         if (ButtonCadastrar.isEnabled() && j == 10) {
-            ccl.setNumero(textNumero.getText());
-            ccl.setSexo(textSexo.getSelectedItem());
-            ccl.setNome(textNome.getText());
-            ccl.setCidade(textCidade.getText());
-            ccl.setCpf(textCpfFormatted.getText());
-            ccl.setEndereco(textEndereco.getText());
-            ccl.setUf(textUF.getText());
-            ccl.setBairro(textBairro.getText());
-            ccl.setComplemento(textComplemento.getText()); 
-            ccl.setData(jDate.getDate());
-            final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
-            ccl.imprimirN();
+//            ccl.setNumero(textNumero.getText());
+//            ccl.setSexo(textSexo.getSelectedItem());
+//            ccl.setNome(textNome.getText());
+//            ccl.setCidade(textCidade.getText());
+//            ccl.setCpf(textCpfFormatted.getText());
+//            ccl.setEndereco(textEndereco.getText());
+//            ccl.setUf(textUF.getText());
+//            ccl.setBairro(textBairro.getText());
+//            ccl.setComplemento(textComplemento.getText()); 
+//            ccl.setData(jDate.getDate());
+//            final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
+//            ccl.imprimirN();
+              
+
+               database.ClienteDAO e = new database.ClienteDAO();
+               
+              database.ClienteDAO;
+               
             
             
                                     
