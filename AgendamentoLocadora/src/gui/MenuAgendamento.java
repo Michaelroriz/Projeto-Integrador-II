@@ -39,19 +39,7 @@ public class MenuAgendamento extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("DBagendamento?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
-        veiculoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
-        veiculoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery.getResultList();
-        veiculoQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
-        veiculoList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery1.getResultList();
-        veiculoQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
-        veiculoList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery2.getResultList();
-        veiculoQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
-        veiculoList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery3.getResultList();
-        filialQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Filial f");
-        filialList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : filialQuery.getResultList();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -138,26 +126,10 @@ public class MenuAgendamento extends javax.swing.JFrame {
 
         jTableListaVeiculos.setColumnSelectionAllowed(true);
         jTableListaVeiculos.setDropMode(javax.swing.DropMode.INSERT);
-
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, veiculoList3, jTableListaVeiculos);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${marca}"));
-        columnBinding.setColumnName("Marca");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${modelo}"));
-        columnBinding.setColumnName("Modelo");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${placa}"));
-        columnBinding.setColumnName("Placa");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
         jScrollPane1.setViewportView(jTableListaVeiculos);
         jTableListaVeiculos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jLabel3.setText("*Selecione um item da lista");
-
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, filialList, jComboFilial);
-        bindingGroup.addBinding(jComboBoxBinding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,11 +180,12 @@ public class MenuAgendamento extends javax.swing.JFrame {
                                 .addGap(47, 47, 47)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textHoraDev, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jLabel8)
-                                .addComponent(textHoraDev, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel8))
+                                    .addGap(0, 0, Short.MAX_VALUE)))
                             .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(112, 112, 112))
         );
@@ -275,8 +248,6 @@ public class MenuAgendamento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -401,9 +372,6 @@ public class MenuAgendamento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCancelar;
     private javax.swing.JButton ButtonConcluir;
-    private javax.persistence.EntityManager entityManager;
-    private java.util.List<gui.Filial> filialList;
-    private javax.persistence.Query filialQuery;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboFilial;
     private com.toedter.calendar.JDateChooser jDateDevolucao;
@@ -425,14 +393,5 @@ public class MenuAgendamento extends javax.swing.JFrame {
     private javax.swing.JTable jTableListaVeiculos;
     private javax.swing.JComboBox textHoraDev;
     private javax.swing.JComboBox textHoraRet;
-    private java.util.List<gui.Veiculo> veiculoList;
-    private java.util.List<gui.Veiculo> veiculoList1;
-    private java.util.List<gui.Veiculo> veiculoList2;
-    private java.util.List<gui.Veiculo> veiculoList3;
-    private javax.persistence.Query veiculoQuery;
-    private javax.persistence.Query veiculoQuery1;
-    private javax.persistence.Query veiculoQuery2;
-    private javax.persistence.Query veiculoQuery3;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
