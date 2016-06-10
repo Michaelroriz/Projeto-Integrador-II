@@ -49,6 +49,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        ButtonAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Add User Group Man Man-48.png"))); // NOI18N
         ButtonAgendar.setText("Agendar Locação");
         ButtonAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +111,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

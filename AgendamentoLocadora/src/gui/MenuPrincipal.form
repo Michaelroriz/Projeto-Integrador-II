@@ -53,7 +53,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -106,6 +106,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="ButtonAgendar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/gui/Add User Group Man Man-48.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agendar Loca&#xe7;&#xe3;o"/>
               </Properties>
               <Events>
