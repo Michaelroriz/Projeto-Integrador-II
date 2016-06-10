@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  * Para a conexão temos uma classe que faz a função de fábrica de conexões.
@@ -42,8 +43,9 @@ public class Conexao {
         try {
             con = abreConexao(URL, NOME, SENHA, Conexao.MYSQL);
             comando = con.createStatement();
-            System.out.println("Conectado!");
-        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null,"Conectado ao Banco de Dados");
+            } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao realizar consulta ao Banco de Dados");
             imprimeErro("Erro ao carregar o driver", e.getMessage());
         } catch (SQLException e) {
             imprimeErro("Erro ao conectar", e.getMessage());
@@ -61,10 +63,8 @@ public class Conexao {
     }
 
     public static void imprimeErro(String msg, String msgErro) {
-//        JOptionPane.showMessageDialog(null, msg, "Erro crítico", 0);
-        System.err.println(msg);
-        System.out.println(msgErro);
-        System.exit(0);
+        JOptionPane.showMessageDialog(null, msg, "Erro crítico", 0);
+       
     }
 
 }
