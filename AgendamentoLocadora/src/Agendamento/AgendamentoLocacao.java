@@ -5,6 +5,8 @@
  */
 package Agendamento;
 
+import java.sql.Time;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -14,91 +16,93 @@ import java.util.Date;
 public class AgendamentoLocacao {
 
     //Atributos
-    
-    private Date horasaida;
-    private Date datasaida;
-    private Date dataretorno;
-    private Date horaretorno;
-    private String pais;
-    private String cidade;
-    private String local;
+    private String filial;
+    private String cliente;
+    private String funcionario;
+    private Calendar datasaida;
+    private Time horasaida;
+    private Calendar dataretorno;
+    private Time horaretorno;
+    private String observacao; //Banco de dados consta como motivo
 
-    //Construtor
-    public AgendamentoLocacao(Date datasaida, Date dataretorno, Date horasaida, Date horaretorno, String pais, String cidade, String local) {
+    //Criação do construtor
+    public AgendamentoLocacao(String filial, String cliente, String funcionario, Calendar datasaida, Time horasaida, Calendar dataretorno, Time horaretorno, String pais, String cidade, String observacao) {
+        this.filial = filial;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
         this.datasaida = datasaida;
-        this.dataretorno = dataretorno;
         this.horasaida = horasaida;
+        this.dataretorno = dataretorno;
         this.horaretorno = horaretorno;
-        this.pais = pais;
-        this.cidade = cidade;
-        this.local = local;
+        this.observacao = observacao;
     }
 
-    //Métodos
-    
-    public Date getDatasaida() {
+    public String getFilial() {
+        return filial;
+    }
+
+    public void setFilial(String filial) {
+        this.filial = filial;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(String funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Calendar getDatasaida() {
         return datasaida;
     }
 
-    public void setDatasaida(Date datasaida) {
+    public void setDatasaida(Calendar datasaida) {
         this.datasaida = datasaida;
     }
 
-    public Date getDataretorno() {
-        return dataretorno;
-    }
-
-    public void setDataretorno(Date dataretorno) {
-        this.dataretorno = dataretorno;
-    }    
-
-    public void setHorasaida(Date horasaida) {
-        this.horasaida = horasaida;
-    }
-
-    public Date getHoraSaida() {
+    public Time getHorasaida() {
         return horasaida;
     }
 
-    public void setHoraRetorno(Date horaretorno) {
-        this.horaretorno = horaretorno;
+    public void setHorasaida(Time horasaida) {
+        this.horasaida = horasaida;
     }
 
-    public Date getHoraRetorno() {
+    public Calendar getDataretorno() {
+        return dataretorno;
+    }
+
+    public void setDataretorno(Calendar dataretorno) {
+        this.dataretorno = dataretorno;
+    }
+
+    public Time getHoraretorno() {
         return horaretorno;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setHoraretorno(Time horaretorno) {
+        this.horaretorno = horaretorno;
     }
 
-    public String getPais() {
-        return pais;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
+      
+    
 
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-    //Apenas para testes de inserção
-    public void imprimi() {
-        System.out.println(datasaida);
-        System.out.println(dataretorno);
-        //System.out.println(horasaida);
-        //System.out.println(horaretorno);
-        System.out.println(pais);
-        System.out.println(cidade);
-        System.out.println(local);
-    }
+    
 }

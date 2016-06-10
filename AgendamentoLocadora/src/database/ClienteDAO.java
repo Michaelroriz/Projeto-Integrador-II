@@ -5,7 +5,9 @@
  */
 package database;
 
+import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +23,23 @@ public class ClienteDAO {
         
         try {
             acesso.executeUpdate("insert into CLIENTE(nome,cpf,datadenascimento,sexo,endereco,complemento,bairro,cidade,uf values)'"+cliente.getNome()+"','" +cliente.getCpf()+"','"+cliente.getData()+"','"+cliente.getSexo()+"','"+cliente.getEndereco()+"','"+cliente.getComplemento()+"','"+cliente.getBairro()+"','"+cliente.getCidade()+"','"+cliente.getUf()+"';'");
+            
+            cliente.setNome("nome");
+            cliente.setSexo(this);
+            cliente.setCpf("cpf");
+            cliente.setEndereco("endereco");
+            cliente.setNumero("numero");
+            cliente.setComplemento("complemento");
+            cliente.setBairro("bairro");
+            cliente.setCidade("cidade");
+            cliente.setUf("uf");
+            cliente.setComplemento("complemento");
+            
+            JOptionPane.showInternalConfirmDialog(null, "Deseja incluir o registro?");
+            
         } catch (Exception e) {
+            
+            //JOptionPane.showMessageDialog(, "Erro na inclusão");
         }
         
     }

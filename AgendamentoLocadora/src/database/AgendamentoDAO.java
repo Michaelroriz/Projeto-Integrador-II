@@ -8,8 +8,8 @@ package database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.time.Clock;
-import java.time.Instant;
 import static java.time.temporal.TemporalQueries.zone;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,22 +33,20 @@ public class AgendamentoDAO {
     public void Agendamento(Agendamento.AgendamentoLocacao agendamento) {
 
         Conexao.conectar();
-
-        Vector<AgendamentoDAO> entradas = new Vector<AgendamentoDAO>();
+        
+        //Vector<AgendamentoDAO> entradas = new Vector<AgendamentoDAO>();
 
         ResultSet rs = null; //Verificar consistencia com inicialização null
         
         try {
-            acesso.executeUpdate("insert into AGENDAMENTO");
+            acesso.executeUpdate("insert into AGENDAMENTO" + "");
             while (rs.next()) {
-                agendamento.setPais("pais");
-                agendamento.setCidade("cidade");
-                agendamento.setLocal("local");
-                agendamento.setDatasaida(Date.from(Instant.MIN));
-                agendamento.setHorasaida(Date.from(Instant.EPOCH));
-                agendamento.setDataretorno(Date.from(Instant.EPOCH));
-                agendamento.setHoraRetorno(Date.from(Instant.EPOCH));
-                               
+                agendamento.setFilial("filial");
+                agendamento.setCliente("cliente");
+                agendamento.setDatasaida(Calendar.getInstance());
+                //agendamento.setHorasaida(horasaida);
+                //agendamento.setDataretorno(Calendar.getInstance());
+                //agendamento.setHoraretorno(horaretorno);
             }
                     
         } catch (SQLException e) {
