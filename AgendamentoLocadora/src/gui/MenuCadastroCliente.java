@@ -377,7 +377,8 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     static Cadastro.CadastroCliente ccl = new CadastroCliente(null, null, null, null, null, null, null, null, null, null);
-
+    
+    static database.ClienteDAO e = new database.ClienteDAO();
 
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         //Se botão Cancelar for selecionada, dados serão apagados
@@ -467,23 +468,23 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         }
         //Se todos os campos estiverem preenchidos, os dados são armazenados
         if (ButtonCadastrar.isEnabled() && j == 10) {
-//            ccl.setNumero(textNumero.getText());
-//            ccl.setSexo(textSexo.getSelectedItem());
-//            ccl.setNome(textNome.getText());
-//            ccl.setCidade(textCidade.getText());
-//            ccl.setCpf(textCpfFormatted.getText());
-//            ccl.setEndereco(textEndereco.getText());
-//            ccl.setUf(textUF.getText());
-//            ccl.setBairro(textBairro.getText());
-//            ccl.setComplemento(textComplemento.getText()); 
-//            ccl.setData(jDate.getDate());
-//            final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
+            ccl.setNumero(textNumero.getText());
+            ccl.setSexo(textSexo.getSelectedItem());
+            ccl.setNome(textNome.getText());
+            ccl.setCidade(textCidade.getText());
+            ccl.setCpf(textCpfFormatted.getText());
+            ccl.setEndereco(textEndereco.getText());
+            ccl.setUf(textUF.getText());
+            ccl.setBairro(textBairro.getText());
+            ccl.setComplemento(textComplemento.getText()); 
+            ccl.setData(jDate.getDate());
+            final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
 //            ccl.imprimirN();
               
 
-               database.ClienteDAO e = new database.ClienteDAO();
+              e.CadastroClientes(ccl);
                
-              database.ClienteDAO;
+              
                
             
             
