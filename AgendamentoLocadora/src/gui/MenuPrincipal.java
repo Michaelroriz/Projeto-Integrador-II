@@ -41,6 +41,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jInternalFrame1.setTitle("Locadora de Veiculos Rent A Car");
         jInternalFrame1.setVisible(true);
 
+        ButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Add User Group Man Man-48.png"))); // NOI18N
         ButtonCadastrar.setText("Cadastrar");
         ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
