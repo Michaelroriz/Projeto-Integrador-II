@@ -1,6 +1,103 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.persistence.EntityManager" name="entityManager">
+      <Properties>
+        <Property name="persistenceUnit" type="java.lang.String" value="DBagendamento?zeroDateTimeBehavior=convertToNullPU"/>
+      </Properties>
+    </Component>
+    <Component class="javax.persistence.Query" name="veiculoQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT v FROM Veiculo v"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="veiculoList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="veiculoQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;gui.Veiculo&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.persistence.Query" name="veiculoQuery1">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT v FROM Veiculo v"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="veiculoList1">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="veiculoQuery1"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;gui.Veiculo&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.persistence.Query" name="veiculoQuery2">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT v FROM Veiculo v"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="veiculoList2">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="veiculoQuery2"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;gui.Veiculo&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.persistence.Query" name="veiculoQuery3">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT v FROM Veiculo v"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="veiculoList3">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="veiculoQuery3"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;gui.Veiculo&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.persistence.Query" name="filialQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT f FROM Filial f"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="entityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="filialList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="filialQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;gui.Filial&gt;"/>
+      </AuxValues>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -28,7 +125,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jInternalFrame1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jInternalFrame1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -39,26 +136,7 @@
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="134" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
@@ -67,128 +145,107 @@
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="ggg"/>
           </AccessibilityProperties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="Center"/>
+            </Constraint>
+          </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="textLocal" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" pref="147" max="32767" attributes="0"/>
-                                  <Component id="jDateRetirada" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jDateDevolucao" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="textHoraRet" min="-2" pref="56" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="textMinRet" min="-2" pref="56" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="textHoraDev" min="-2" pref="56" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="textMinDev" min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ButtonCancelar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="ButtonConcluir" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelMsgDataRet" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelMsgDataDev" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabelMsgDateValido" min="-2" pref="289" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jComboBox1" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="textPais" max="32767" attributes="0"/>
+                              <Component id="jComboFilial" min="-2" pref="193" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabelMsgPais" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelMsgCidade" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="textCidade" min="-2" pref="348" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabelMsgLocal" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelMsgDataRet" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelMsgDataDev" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelMsgDateValido" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="ButtonCancelar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="ButtonConcluir" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                                      <Component id="jLabelMsgSelectIdade" min="-2" pref="114" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="121" pref="121" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="checkBoxIdade" min="-2" pref="185" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jDateRetirada" alignment="0" pref="221" max="32767" attributes="0"/>
+                                          <Component id="jDateDevolucao" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="textHoraDev" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="textHoraRet" min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textPais" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboFilial" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelMsgPais" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelMsgCidade" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textLocal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="jLabelMsgLocal" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" pref="14" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textHoraRet" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textMinRet" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="textHoraRet" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jDateRetirada" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -200,10 +257,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="textHoraDev" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textMinDev" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="textHoraDev" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jDateDevolucao" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -212,14 +266,19 @@
                           <Component id="jLabelMsgDateValido" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="checkBoxIdade" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="193" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelMsgSelectIdade" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtonConcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="197" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -227,31 +286,12 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pa&#xed;s:"/>
+                <Property name="text" type="java.lang.String" value="Filial:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textPais">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cidade:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textCidade">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textCidadeActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Local:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="textLocal">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="*devolver ve&#xed;culo no mesmo local"/>
+                <Property name="text" type="java.lang.String" value="*devolver ve&#xed;culo na mesma filial"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -265,24 +305,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="textHoraRet">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;00&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;,&quot;04&quot;,&quot;05&quot;,&quot;06&quot;,&quot;07&quot;,&quot;08&quot;,&quot;09&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;16&quot;,&quot;17&quot;,&quot;18&quot;,&quot;19&quot;,&quot;20&quot;,&quot;21&quot;,&quot;22&quot;,&quot;23&quot;})" type="code"/>
-                </Property>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textHoraRetActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="textMinRet">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;00&quot;, &quot;30&quot; })" type="code"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textMinRetActionPerformed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="textHoraRet.setModel(new javax.swing.DefaultComboBoxModel(new String[] {&quot;06:00&quot;, &quot;06:30&quot;, &quot;07:00&quot;, &quot;07:30&quot;,&quot;08:00&quot;,&quot;08:30&quot;,&quot;09:00&quot;,&quot;09:30&quot;,&quot;10:00&quot;,&quot;10:30&quot;,&quot;11:00&quot;,&quot;11:30&quot;,&quot;12:00&quot;,&quot;12:30&quot;,&quot;13:00&quot;,&quot;13:30&quot;,&quot;14:00&quot;,&quot;14:30&quot;,&quot;15:00&quot;,&quot;15:30&quot;,&quot;16:00&quot;,&quot;16:30&quot;,&quot;17:00&quot;,&quot;17:30&quot;,&quot;18:00&quot;,&quot;18:30&quot;,&quot;19:00&quot;,&quot;19:30&quot;,&quot;20:00&quot;,&quot;20:30&quot;,&quot;21:00&quot;,&quot;21:30&quot;,&quot;22:00&quot;}));"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -297,24 +325,9 @@
             <Component class="javax.swing.JComboBox" name="textHoraDev">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;00&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;,&quot;04&quot;,&quot;05&quot;,&quot;06&quot;,&quot;07&quot;,&quot;08&quot;,&quot;09&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;16&quot;,&quot;17&quot;,&quot;18&quot;,&quot;19&quot;,&quot;20&quot;,&quot;21&quot;,&quot;22&quot;,&quot;23&quot; })" type="code"/>
+                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;06:00&quot;, &quot;06:30&quot;, &quot;07:00&quot;, &quot;07:30&quot;,&quot;08:00&quot;,&quot;08:30&quot;,&quot;09:00&quot;,&quot;09:30&quot;,&quot;10:00&quot;,&quot;10:30&quot;,&quot;11:00&quot;,&quot;11:30&quot;,&quot;12:00&quot;,&quot;12:30&quot;,&quot;13:00&quot;,&quot;13:30&quot;,&quot;14:00&quot;,&quot;14:30&quot;,&quot;15:00&quot;,&quot;15:30&quot;,&quot;16:00&quot;,&quot;16:30&quot;,&quot;17:00&quot;,&quot;17:30&quot;,&quot;18:00&quot;,&quot;18:30&quot;,&quot;19:00&quot;,&quot;19:30&quot;,&quot;20:00&quot;,&quot;20:30&quot;,&quot;21:00&quot;,&quot;21:30&quot;,&quot;22:00&quot; })" type="code"/>
                 </Property>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="textMinDev">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;00&quot;, &quot;30&quot; })" type="code"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="checkBoxIdade">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Condutor acima de 18 anos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxIdadeActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonCancelar">
               <Properties>
@@ -332,30 +345,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonConcluirActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelMsgPais">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="cc" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="*Campo obrigat&#xf3;rio"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelMsgCidade">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="cc" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="*Campo obrigat&#xf3;rio"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelMsgLocal">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="cc" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="*Campo obrigat&#xf3;rio"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelMsgDataRet">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -372,14 +361,6 @@
                 <Property name="text" type="java.lang.String" value="*Campo obrigat&#xf3;rio"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelMsgSelectIdade">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="cc" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="*Campo obrigat&#xf3;rio"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelMsgDateValido">
               <Properties>
                 <Property name="text" type="java.lang.String" value="*Data de devolu&#xe7;&#xe3;o deve ser maior que data de retirada"/>
@@ -388,6 +369,71 @@
             <Component class="com.toedter.calendar.JDateChooser" name="jDateRetirada">
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jDateDevolucao">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox1">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Ve&#xed;culos Dispon&#xed;veis"/>
+                    <StringItem index="1" value="Todos Ve&#xed;culos"/>
+                  </StringArray>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar:"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTableListaVeiculos">
+                  <Properties>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="1"/>
+                    </Property>
+                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                    <Property name="dropMode" type="javax.swing.DropMode" editor="org.netbeans.modules.form.editors.EnumEditor">
+                      <Value id="INSERT"/>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                  <BindingProperties>
+                    <BindingProperty name="elements" source="veiculoList3" target="jTableListaVeiculos" targetPath="elements" updateStrategy="0" immediately="true">
+                      <Subbinding sourcePath="${marca}">
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${modelo}">
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${placa}">
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                    </BindingProperty>
+                  </BindingProperties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="*Selecione um item da lista"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboFilial">
+              <BindingProperties>
+                <BindingProperty name="elements" source="filialList" target="jComboFilial" targetPath="elements" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
             </Component>
           </SubComponents>
         </Container>

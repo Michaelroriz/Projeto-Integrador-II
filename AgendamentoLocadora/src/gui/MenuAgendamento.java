@@ -8,6 +8,8 @@ package gui;
 import Agendamento.AgendamentoLocacao;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.time.Month;
+import java.time.Year;
 import java.util.Calendar;
 import java.util.TimeZone;
 import java.util.Date;
@@ -23,12 +25,9 @@ public class MenuAgendamento extends javax.swing.JFrame {
      */
     public MenuAgendamento() {
         initComponents();
-        jLabelMsgCidade.setVisible(false);
+        
         jLabelMsgDataDev.setVisible(false);
-        jLabelMsgDataRet.setVisible(false);
-        jLabelMsgLocal.setVisible(false);
-        jLabelMsgPais.setVisible(false);
-        jLabelMsgSelectIdade.setVisible(false);
+        jLabelMsgDataRet.setVisible(false);                        
         jLabelMsgDateValido.setVisible(false);
     }
 
@@ -40,36 +39,42 @@ public class MenuAgendamento extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("DBagendamento?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        veiculoQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
+        veiculoList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery.getResultList();
+        veiculoQuery1 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
+        veiculoList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery1.getResultList();
+        veiculoQuery2 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
+        veiculoList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery2.getResultList();
+        veiculoQuery3 = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT v FROM Veiculo v");
+        veiculoList3 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : veiculoQuery3.getResultList();
+        filialQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT f FROM Filial f");
+        filialList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : filialQuery.getResultList();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        textPais = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        textCidade = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        textLocal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         textHoraRet = new javax.swing.JComboBox();
-        textMinRet = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         textHoraDev = new javax.swing.JComboBox();
-        textMinDev = new javax.swing.JComboBox();
-        checkBoxIdade = new javax.swing.JCheckBox();
         ButtonCancelar = new javax.swing.JButton();
         ButtonConcluir = new javax.swing.JButton();
-        jLabelMsgPais = new javax.swing.JLabel();
-        jLabelMsgCidade = new javax.swing.JLabel();
-        jLabelMsgLocal = new javax.swing.JLabel();
         jLabelMsgDataRet = new javax.swing.JLabel();
         jLabelMsgDataDev = new javax.swing.JLabel();
-        jLabelMsgSelectIdade = new javax.swing.JLabel();
         jLabelMsgDateValido = new javax.swing.JLabel();
         jDateRetirada = new com.toedter.calendar.JDateChooser();
         jDateDevolucao = new com.toedter.calendar.JDateChooser();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableListaVeiculos = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jComboFilial = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,35 +83,18 @@ public class MenuAgendamento extends javax.swing.JFrame {
 
         jPanel1.setName("\n"); // NOI18N
 
-        jLabel1.setText("País:");
+        jLabel1.setText("Filial:");
 
-        jLabel2.setText("Cidade:");
-
-        textCidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textCidadeActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Local:");
-
-        jLabel4.setText("*devolver veículo no mesmo local");
+        jLabel4.setText("*devolver veículo na mesma filial");
 
         jLabel5.setText("Data de retirada:");
 
         jLabel6.setText("Hora:");
 
-        textHoraRet.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"00", "01", "02", "03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"}));
+        textHoraRet.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"06:00", "06:30", "07:00", "07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"}));
         textHoraRet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textHoraRetActionPerformed(evt);
-            }
-        });
-
-        textMinRet.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"00", "30" }));
-        textMinRet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textMinRetActionPerformed(evt);
             }
         });
 
@@ -114,16 +102,7 @@ public class MenuAgendamento extends javax.swing.JFrame {
 
         jLabel8.setText("Hora:");
 
-        textHoraDev.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23" }));
-
-        textMinDev.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "30" }));
-
-        checkBoxIdade.setText("Condutor acima de 18 anos");
-        checkBoxIdade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBoxIdadeActionPerformed(evt);
-            }
-        });
+        textHoraDev.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06:00", "06:30", "07:00", "07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00" }));
 
         ButtonCancelar.setText("Cancelar");
         ButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,123 +118,120 @@ public class MenuAgendamento extends javax.swing.JFrame {
             }
         });
 
-        jLabelMsgPais.setForeground(new java.awt.Color(204, 0, 0));
-        jLabelMsgPais.setText("*Campo obrigatório");
-
-        jLabelMsgCidade.setForeground(new java.awt.Color(204, 0, 0));
-        jLabelMsgCidade.setText("*Campo obrigatório");
-
-        jLabelMsgLocal.setForeground(new java.awt.Color(204, 0, 0));
-        jLabelMsgLocal.setText("*Campo obrigatório");
-
         jLabelMsgDataRet.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgDataRet.setText("*Campo obrigatório");
 
         jLabelMsgDataDev.setForeground(new java.awt.Color(204, 0, 0));
         jLabelMsgDataDev.setText("*Campo obrigatório");
 
-        jLabelMsgSelectIdade.setForeground(new java.awt.Color(204, 0, 0));
-        jLabelMsgSelectIdade.setText("*Campo obrigatório");
-
         jLabelMsgDateValido.setText("*Data de devolução deve ser maior que data de retirada");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Veículos Disponíveis", "Todos Veículos" }));
+        jComboBox1.setToolTipText("");
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Listar:");
+
+        jTableListaVeiculos.setColumnSelectionAllowed(true);
+        jTableListaVeiculos.setDropMode(javax.swing.DropMode.INSERT);
+
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, veiculoList3, jTableListaVeiculos);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${marca}"));
+        columnBinding.setColumnName("Marca");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${modelo}"));
+        columnBinding.setColumnName("Modelo");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${placa}"));
+        columnBinding.setColumnName("Placa");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane1.setViewportView(jTableListaVeiculos);
+        jTableListaVeiculos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        jLabel3.setText("*Selecione um item da lista");
+
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, filialList, jComboFilial);
+        bindingGroup.addBinding(jComboBoxBinding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textLocal))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(jDateRetirada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateDevolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(121, 121, 121)
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(91, 91, 91)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textPais))
-                    .addComponent(jLabelMsgPais)
-                    .addComponent(jLabelMsgCidade)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelMsgLocal)
-                    .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ButtonCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtonConcluir)))))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelMsgDataRet)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelMsgDataDev)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelMsgDateValido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelMsgDateValido, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ButtonCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonConcluir))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboFilial, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabelMsgSelectIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(checkBoxIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(121, 121, 121))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jDateRetirada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                    .addComponent(jDateDevolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(47, 47, 47)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel8)
+                                .addComponent(textHoraDev, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(112, 112, 112))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(textPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelMsgPais)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(textCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelMsgCidade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(textLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(jLabelMsgLocal)
+                    .addComponent(jComboFilial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textMinRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateRetirada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelMsgDataRet)
@@ -265,41 +241,28 @@ public class MenuAgendamento extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textMinDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textHoraDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMsgDataDev)
                     .addComponent(jLabelMsgDateValido))
                 .addGap(18, 18, 18)
-                .addComponent(checkBoxIdade)
+                .addComponent(jLabel2)
+                .addGap(7, 7, 7)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelMsgSelectIdade)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonCancelar)
-                    .addComponent(ButtonConcluir)))
+                    .addComponent(ButtonConcluir))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
-        );
-
+        jInternalFrame1.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
         jPanel1.getAccessibleContext().setAccessibleDescription("ggg");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,21 +273,15 @@ public class MenuAgendamento extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    static AgendamentoLocacao mag = new AgendamentoLocacao(null, null, null, null, null, null, null);
+//    static AgendamentoLocacao mag = new AgendamentoLocacao(null, null, null, null, null, null, null);
     
-    private void checkBoxIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxIdadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkBoxIdadeActionPerformed
-
-    private void textCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textCidadeActionPerformed
-
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         this.dispose();
         new MenuPrincipal().setVisible(true);
@@ -336,24 +293,7 @@ public class MenuAgendamento extends javax.swing.JFrame {
         int j=0;
         if (ButtonConcluir.isEnabled()) {
             //Condição para identificar campos não preenchidos
-            if (textPais.getText().isEmpty()) {
-                jLabelMsgPais.setVisible(true);
-            } else {
-                jLabelMsgPais.setVisible(false);
-                j++;
-            }
-            if (textCidade.getText().isEmpty()) {
-                jLabelMsgCidade.setVisible(true);
-            } else {
-                jLabelMsgCidade.setVisible(false);
-                j++;
-            }
-            if (textLocal.getText().isEmpty()) {
-                jLabelMsgLocal.setVisible(true);
-            } else {
-                jLabelMsgLocal.setVisible(false);
-                j++;
-            }
+            
             if (jDateRetirada.getJCalendar().isValid()) {
                 jLabelMsgDataRet.setVisible(false);                
             } else {
@@ -366,17 +306,26 @@ public class MenuAgendamento extends javax.swing.JFrame {
                 jLabelMsgDataDev.setVisible(true);
                 j++;
             }
-            if (checkBoxIdade.isSelected()) {
-                jLabelMsgSelectIdade.setVisible(false);
-                j++;
-            } else {
-                jLabelMsgSelectIdade.setVisible(true);               
-            }
+//            if(jComboBox1.getSelectedItem().equals("Veículos Disponíveis")){                                
+//            }
+            //Comparar duas datas com data atual
+            final Calendar cal = Calendar.getInstance();
+            
             //Comparar duas datas
             Calendar calRet=jDateRetirada.getCalendar();
             Calendar calDev=jDateDevolucao.getCalendar();
             
-            if(calRet.compareTo(calDev)==0||calRet.compareTo(calDev)==1){
+            if(calRet.compareTo(cal)==0||calRet.compareTo(cal)==1){
+                
+                jLabelMsgDataRet.setVisible(false);
+                j++;
+            }else{
+                final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                jLabelMsgDataRet.setText("É necessário uma data mais recente (ex: "+df.format(cal.getTime())+" )");
+                jLabelMsgDataRet.setVisible(true);
+            }
+            
+            if(calRet.compareTo(calDev)==0||calRet.compareTo(calDev)==-1){
                 jLabelMsgDateValido.setVisible(true);
             }else if(calRet.compareTo(calDev)==-1){
                 jLabelMsgDateValido.setVisible(false);           
@@ -384,24 +333,16 @@ public class MenuAgendamento extends javax.swing.JFrame {
             }
         }        
         //Se todos os campos estiverem preenchidos, os dados são armazenados
-        if (ButtonConcluir.isEnabled() && j == 7) { 
-            mag.setCidade(textCidade.getText());
-            mag.setLocal(textLocal.getText());
-            mag.setPais(textPais.getText());
-            mag.setDataretorno(jDateDevolucao.getDate());
-            mag.setDatasaida(jDateRetirada.getDate());            
+        if (ButtonConcluir.isEnabled() && j == 4) { 
             
-            mag.imprimi();
             
-            //Concatenar duas strings para Int
-            String horadev=textHoraDev.toString();
-            String mindev=textMinDev.toString();
-            String horariodev = horadev + "" + mindev;
-           
-            String horaret=textHoraDev.toString();
-            String minret=textMinDev.toString();
-            String horarioret = horaret + "" + minret;
+//            mag.setDataretorno(jDateDevolucao.getDate());
+//            mag.setDatasaida(jDateRetirada.getDate());            
+//            
+//            mag.imprimi();
             
+              database.AgendamentoDAO ag = new database.AgendamentoDAO();
+              
             
             
             
@@ -418,9 +359,9 @@ public class MenuAgendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textHoraRetActionPerformed
 
-    private void textMinRetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMinRetActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textMinRetActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,7 +401,11 @@ public class MenuAgendamento extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCancelar;
     private javax.swing.JButton ButtonConcluir;
-    private javax.swing.JCheckBox checkBoxIdade;
+    private javax.persistence.EntityManager entityManager;
+    private java.util.List<gui.Filial> filialList;
+    private javax.persistence.Query filialQuery;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboFilial;
     private com.toedter.calendar.JDateChooser jDateDevolucao;
     private com.toedter.calendar.JDateChooser jDateRetirada;
     private javax.swing.JInternalFrame jInternalFrame1;
@@ -472,20 +417,22 @@ public class MenuAgendamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelMsgCidade;
     private javax.swing.JLabel jLabelMsgDataDev;
     private javax.swing.JLabel jLabelMsgDataRet;
     private javax.swing.JLabel jLabelMsgDateValido;
-    private javax.swing.JLabel jLabelMsgLocal;
-    private javax.swing.JLabel jLabelMsgPais;
-    private javax.swing.JLabel jLabelMsgSelectIdade;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField textCidade;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableListaVeiculos;
     private javax.swing.JComboBox textHoraDev;
     private javax.swing.JComboBox textHoraRet;
-    private javax.swing.JTextField textLocal;
-    private javax.swing.JComboBox textMinDev;
-    private javax.swing.JComboBox textMinRet;
-    private javax.swing.JTextField textPais;
+    private java.util.List<gui.Veiculo> veiculoList;
+    private java.util.List<gui.Veiculo> veiculoList1;
+    private java.util.List<gui.Veiculo> veiculoList2;
+    private java.util.List<gui.Veiculo> veiculoList3;
+    private javax.persistence.Query veiculoQuery;
+    private javax.persistence.Query veiculoQuery1;
+    private javax.persistence.Query veiculoQuery2;
+    private javax.persistence.Query veiculoQuery3;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
