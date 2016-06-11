@@ -11,10 +11,7 @@ import static database.Conexao.con;
 import gui.MenuPrincipal;
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
-import static database.Conexao.comando;
 
 /**
  *
@@ -26,7 +23,7 @@ public class CadastroClienteDAO {
     public void CadastroClientes(CadastroCliente cliente){
         //Realizar conexão ao BD
         Conexao.conectar();
-            String sql = "insert into cliente (nome,cpf,datanascimento,sexo,endereco,complemento,bairro,cidade,uf) values (?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into CLIENTE (nome,cpf,datanascimento,sexo,endereco,complemento,bairro,cidade,uf) values (?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
@@ -41,13 +38,12 @@ public class CadastroClienteDAO {
             
             stmt.execute();
             stmt.close();
-            //JOptionPane.showMessageDialog(null, "Inserido com sucesso");
-            new MenuPrincipal().setVisible(true);
+            JOptionPane.showMessageDialog(null, "ClienteInserido com sucesso");
             //JOptionPane.showInternalConfirmDialog(null, "Deseja incluir o registro?");
             
         } catch (Exception e) {
            
-            //JOptionPane.showMessageDialog(, "Erro na inclusão");
+            JOptionPane.showMessageDialog(null, "Erro na inclusão");
         }
             
     }
