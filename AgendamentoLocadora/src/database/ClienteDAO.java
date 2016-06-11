@@ -8,6 +8,7 @@ package database;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import Cadastro.CadastroCliente;
 
 /**
  *
@@ -15,32 +16,29 @@ import javax.swing.JOptionPane;
  */
 public class ClienteDAO {
     
-    private Statement acesso;
+    private Statement comando;
     
     public void CadastroClientes(Cadastro.CadastroCliente cliente){
         //Realizar conexão ao BD
-        Conexao.conectar();
+        Conexao.conectar();        
         
         try {
-            acesso.executeUpdate("insert into CLIENTE(nome,cpf,datadenascimento,sexo,endereco,complemento,bairro,cidade,uf values)'"+cliente.getNome()+"','" +cliente.getCpf()+"','"+cliente.getData()+"','"+cliente.getSexo()+"','"+cliente.getEndereco()+"','"+cliente.getComplemento()+"','"+cliente.getBairro()+"','"+cliente.getCidade()+"','"+cliente.getUf()+"';'");
+            comando.executeUpdate("INSERT INTO cliente(nome,cpf,datanascimento,sexo,endereco,numero,complemento,bairro,cidade,uf) values('"
+                    +cliente.getNome()+"','"+cliente.getCpf()+"','"+cliente.getData()+"','"+cliente.getSexo()+"','"
+                    +cliente.getEndereco()+"','"+cliente.getNumero()+"','"+cliente.getComplemento()+"','"
+                    +cliente.getBairro()+"','"+cliente.getCidade()+"','"+cliente.getUf()+"')");
             
-            cliente.setNome("nome");
-            cliente.setSexo(this);
-            cliente.setCpf("cpf");
-            cliente.setEndereco("endereco");
-            cliente.setNumero("numero");
-            cliente.setComplemento("complemento");
-            cliente.setBairro("bairro");
-            cliente.setCidade("cidade");
-            cliente.setUf("uf");
-            cliente.setComplemento("complemento");
             
-            JOptionPane.showInternalConfirmDialog(null, "Deseja incluir o registro?");
+            JOptionPane.showMessageDialog(null, "Inserido com sucesso");
             
         } catch (Exception e) {
             
-            //JOptionPane.showMessageDialog(, "Erro na inclusão");
+            JOptionPane.showMessageDialog(null, "Erro");
+        } finally {
+            Conexao.fechar();
         }
+            
+        
         
     }
     
