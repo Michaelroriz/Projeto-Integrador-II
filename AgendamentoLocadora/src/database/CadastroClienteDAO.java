@@ -41,12 +41,12 @@ public class CadastroClienteDAO {
             
             stmt.execute();
             stmt.close();
-            JOptionPane.showMessageDialog(null, "Inserido com sucesso");
+            //JOptionPane.showMessageDialog(null, "Inserido com sucesso");
             new MenuPrincipal().setVisible(true);
             //JOptionPane.showInternalConfirmDialog(null, "Deseja incluir o registro?");
             
         } catch (Exception e) {
-            System.out.println("nao inserido");
+           
             //JOptionPane.showMessageDialog(, "Erro na inclusão");
         }
             
