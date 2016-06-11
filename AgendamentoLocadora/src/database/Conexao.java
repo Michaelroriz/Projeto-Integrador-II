@@ -48,7 +48,7 @@ public class Conexao {
             JOptionPane.showMessageDialog(null,"Erro ao realizar consulta ao Banco de Dados");
             imprimeErro("Erro ao carregar o driver", e.getMessage());
         } catch (SQLException e) {
-            imprimeErro("Erro ao conectar", e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 

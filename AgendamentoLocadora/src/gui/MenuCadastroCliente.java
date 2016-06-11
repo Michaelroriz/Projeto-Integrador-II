@@ -7,6 +7,7 @@ package gui;
 
 import Cadastro.CadastroCliente;
 import com.toedter.calendar.JDateChooser;
+import database.ClienteDAO;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTextField;
 import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -116,7 +119,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
 
         jLabel4.setText("Sexo:");
 
-        textSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"", "Masculino", "Feminino" }));
+        textSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"", "Masculino", "Feminino"}));
         textSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textSexoActionPerformed(evt);
@@ -376,7 +379,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    static Cadastro.CadastroCliente ccl = new CadastroCliente(null, null, null, null, null, null, null, null, null, null);
+   // static Cadastro.CadastroCliente ccl = new CadastroCliente(null, null, null, null, null, null, null, null, null, null);
     
     static database.ClienteDAO e = new database.ClienteDAO();
 
@@ -468,27 +471,24 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
         }
         //Se todos os campos estiverem preenchidos, os dados são armazenados
         if (ButtonCadastrar.isEnabled() && j == 10) {
-            ccl.setNumero(textNumero.getText());
-            ccl.setSexo(textSexo.getSelectedItem());
-            ccl.setNome(textNome.getText());
-            ccl.setCidade(textCidade.getText());
-            ccl.setCpf(textCpfFormatted.getText());
-            ccl.setEndereco(textEndereco.getText());
-            ccl.setUf(textUF.getText());
-            ccl.setBairro(textBairro.getText());
-            ccl.setComplemento(textComplemento.getText()); 
-            ccl.setData(jDate.getDate());
-            final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");            
-//            ccl.imprimirN();
-              
-
-              e.CadastroClientes(ccl);
-               
-              
-               
+            CadastroCliente cliente = new CadastroCliente(null,null,null,null,null,null,null,null,null,null);
             
+            //preenchimento dos dados no formulario e encaminhamento para execução da entrada do cliente
+            cliente.setNome(textNome.getText());
+            cliente.setCpf(textCpfFormatted.getText());
+            cliente.setData(jDate.getDate());
+            cliente.setSexo(textSexo.getSelectedItem());
+            cliente.setEndereco(textEndereco.getText());
+            cliente.setNumero(textNumero.getText());
+            cliente.setComplemento(textComplemento.getText());
+            cliente.setBairro(textBairro.getText());
+            cliente.setCidade(textCidade.getText());
+            cliente.setUf(textUF.getText());
             
-                                    
+            ClienteDAO dao = new ClienteDAO();
+            dao.CadastroClientes(cliente);
+            //JOptionPane.showMessageDialog(null, "Cliente inserido com sucesso");
+            
             
             //fecha a janela de Cadastro e volta para o menu principal          
             this.dispose();
@@ -502,7 +502,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_textNumeroActionPerformed
 
     private void textSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSexoActionPerformed
-
+        
     }//GEN-LAST:event_textSexoActionPerformed
 
     private void textNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeActionPerformed

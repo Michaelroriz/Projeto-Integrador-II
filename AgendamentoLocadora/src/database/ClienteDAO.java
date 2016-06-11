@@ -22,7 +22,7 @@ public class ClienteDAO {
         Conexao.conectar();
         
         try {
-            acesso.executeUpdate("insert into CLIENTE(nome,cpf,datadenascimento,sexo,endereco,complemento,bairro,cidade,uf values)'"+cliente.getNome()+"','" +cliente.getCpf()+"','"+cliente.getData()+"','"+cliente.getSexo()+"','"+cliente.getEndereco()+"','"+cliente.getComplemento()+"','"+cliente.getBairro()+"','"+cliente.getCidade()+"','"+cliente.getUf()+"';'");
+            acesso.executeUpdate("insert into CLIENTE(nome,cpf,datadenascimento,sexo,endereco,complemento,bairro,cidade,uf) VALUES'"+cliente.getNome()+"','" +cliente.getCpf()+"','"+cliente.getData()+"','"+cliente.getSexo()+"','"+cliente.getEndereco()+"','"+cliente.getComplemento()+"','"+cliente.getBairro()+"','"+cliente.getCidade()+"','"+cliente.getUf()+"';'");
             
             cliente.setNome("nome");
             cliente.setSexo(this);
