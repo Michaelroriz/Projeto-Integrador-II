@@ -9,7 +9,7 @@ package Agendamento;
  *
  * @author michael.aroriz
  */
-public class VeiculoLocado {
+public class VeiculoLocacao {
 
     //Atributos   
 
@@ -18,7 +18,7 @@ public class VeiculoLocado {
     private String modelo;
 
     //Construtor
-    public VeiculoLocado(String placa, String marca, String modelo) {
+    public VeiculoLocacao(String placa, String marca, String modelo) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
