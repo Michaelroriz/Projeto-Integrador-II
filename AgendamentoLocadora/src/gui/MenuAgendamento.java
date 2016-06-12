@@ -179,14 +179,13 @@ public class MenuAgendamento extends javax.swing.JFrame {
                                     .addComponent(jDateDevolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(47, 47, 47)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textHoraDev, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel8))
-                                    .addGap(0, 0, Short.MAX_VALUE)))
-                            .addComponent(textHoraRet, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(textHoraDev, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(textHoraRet, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(112, 112, 112))
         );
         jPanel1Layout.setVerticalGroup(
@@ -232,7 +231,7 @@ public class MenuAgendamento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonCancelar)
                     .addComponent(ButtonConcluir))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         jInternalFrame1.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -251,43 +250,41 @@ public class MenuAgendamento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-//    static AgendamentoLocacao mag = new AgendamentoLocacao(null, null, null, null, null, null, null);
-    
-    private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
-        this.dispose();
-        new MenuInicial().setVisible(true);
-    }//GEN-LAST:event_ButtonCancelarActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void ButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConcluirActionPerformed
-        
+
         //Variável necessária para verificação de campos preenchidos
         int j=0;
         if (ButtonConcluir.isEnabled()) {
             //Condição para identificar campos não preenchidos
-            
+
             if (jDateRetirada.getJCalendar().isValid()) {
-                jLabelMsgDataRet.setVisible(false);                
+                jLabelMsgDataRet.setVisible(false);
             } else {
-                jLabelMsgDataRet.setVisible(true); 
+                jLabelMsgDataRet.setVisible(true);
                 j++;
             }
             if (jDateDevolucao.getJCalendar().isValid()) {
-                jLabelMsgDataDev.setVisible(false);                
+                jLabelMsgDataDev.setVisible(false);
             } else {
                 jLabelMsgDataDev.setVisible(true);
                 j++;
             }
-//            if(jComboBox1.getSelectedItem().equals("Veículos Disponíveis")){                                
-//            }
+            //            if(jComboBox1.getSelectedItem().equals("Veículos Disponíveis")){
+                //            }
             //Comparar duas datas com data atual
             final Calendar cal = Calendar.getInstance();
-            
+
             //Comparar duas datas
             Calendar calRet=jDateRetirada.getCalendar();
             Calendar calDev=jDateDevolucao.getCalendar();
-            
+
             if(calRet.compareTo(cal)==0||calRet.compareTo(cal)==1){
-                
+
                 jLabelMsgDataRet.setVisible(false);
                 j++;
             }else{
@@ -295,45 +292,41 @@ public class MenuAgendamento extends javax.swing.JFrame {
                 jLabelMsgDataRet.setText("É necessário uma data mais recente (ex: "+df.format(cal.getTime())+" )");
                 jLabelMsgDataRet.setVisible(true);
             }
-            
+
             if(calRet.compareTo(calDev)==0||calRet.compareTo(calDev)==-1){
                 jLabelMsgDateValido.setVisible(true);
             }else if(calRet.compareTo(calDev)==-1){
-                jLabelMsgDateValido.setVisible(false);           
+                jLabelMsgDateValido.setVisible(false);
                 j++;
             }
-        }        
+        }
         //Se todos os campos estiverem preenchidos, os dados são armazenados
-        if (ButtonConcluir.isEnabled() && j == 4) { 
-            
-            
-//            mag.setDataretorno(jDateDevolucao.getDate());
-//            mag.setDatasaida(jDateRetirada.getDate());            
-//            
-//            mag.imprimi();
-            
-              database.AgendamentoDAO ag = new database.AgendamentoDAO();
-              
-            
-            
-            
-            //fecha a janela de Cadastro e volta para o menu principal    
+        if (ButtonConcluir.isEnabled() && j == 4) {
+
+            //            mag.setDataretorno(jDateDevolucao.getDate());
+            //            mag.setDatasaida(jDateRetirada.getDate());
+            //
+            //            mag.imprimi();
+
+            database.AgendamentoDAO ag = new database.AgendamentoDAO();
+
+            //fecha a janela de Cadastro e volta para o menu principal
             this.dispose();
             new MenuInicial().setVisible(true);
-        }        
-        
-             
-        
+        }
+
     }//GEN-LAST:event_ButtonConcluirActionPerformed
+
+    private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
+        this.dispose();
+        new MenuInicial().setVisible(true);
+    }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void textHoraRetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textHoraRetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textHoraRetActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
+//    static AgendamentoLocacao mag = new AgendamentoLocacao(null, null, null, null, null, null, null);
+    
     /**
      * @param args the command line arguments
      */

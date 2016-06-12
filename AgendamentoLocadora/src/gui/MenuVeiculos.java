@@ -37,7 +37,7 @@ public class MenuVeiculos extends javax.swing.JFrame {
         jInternalFrame1.setVisible(true);
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Veiculo 1", "Veiculo 2", "Veiculo 3", "Veiculo 4", "Veiculo 5", "Veiculo 6", "Veiculo 7", "Veiculo 8", "Veiculo 9", "Veiculo 10", " " };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
