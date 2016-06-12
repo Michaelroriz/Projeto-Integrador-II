@@ -90,7 +90,7 @@ public class MenuVeiculos extends javax.swing.JFrame {
     private void ButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVoltarActionPerformed
         if (ButtonVoltar.isEnabled()) {
             this.dispose();
-            new MenuPrincipal().setVisible(true);
+            new MenuInicial().setVisible(true);
         }
     }//GEN-LAST:event_ButtonVoltarActionPerformed
 

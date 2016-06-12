@@ -397,7 +397,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             textUF = null;
         }
         this.dispose();
-        new MenuPrincipal().setVisible(true);
+        new MenuInicial().setVisible(true);
 
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
@@ -491,7 +491,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             
             //fecha a janela de Cadastro e volta para o menu principal          
             this.dispose();
-            new MenuPrincipal().setVisible(true);
+            new MenuInicial().setVisible(true);
         }
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
 

@@ -255,7 +255,7 @@ public class MenuAgendamento extends javax.swing.JFrame {
     
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         this.dispose();
-        new MenuPrincipal().setVisible(true);
+        new MenuInicial().setVisible(true);
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void ButtonConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConcluirActionPerformed
@@ -319,7 +319,7 @@ public class MenuAgendamento extends javax.swing.JFrame {
             
             //fecha a janela de Cadastro e volta para o menu principal    
             this.dispose();
-            new MenuPrincipal().setVisible(true);
+            new MenuInicial().setVisible(true);
         }        
         
              

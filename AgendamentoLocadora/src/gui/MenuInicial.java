@@ -5,18 +5,16 @@
  */
 package gui;
 
-import javax.swing.tree.DefaultMutableTreeNode;
-
 /**
  *
- * @author michael.aroriz
+ * @author Michael Roriz
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuInicial extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuPrincipal
+     * Creates new form MenuInicial
      */
-    public MenuPrincipal() {
+    public MenuInicial() {
         initComponents();
     }
 
@@ -30,26 +28,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jPanel1 = new javax.swing.JPanel();
-        ButtonCadastrar = new javax.swing.JButton();
         ButtonAgendar = new javax.swing.JButton();
-        ButtonConsultaVeiculo = new javax.swing.JButton();
+        ButtonCadastrar = new javax.swing.JButton();
+        ButtonVeiculosDisponiveis = new javax.swing.JButton();
         ButtonSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jInternalFrame1.setTitle("Locadora de Veiculos Rent A Car");
+        jInternalFrame1.setTitle("Locadora Rent A Car");
         jInternalFrame1.setVisible(true);
 
-        ButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Add User Group Man Man-48.png"))); // NOI18N
-        ButtonCadastrar.setText("Cadastrar");
-        ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCadastrarActionPerformed(evt);
-            }
-        });
-
-        ButtonAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Add User Group Man Man-48.png"))); // NOI18N
         ButtonAgendar.setText("Agendar Locação");
         ButtonAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,10 +45,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        ButtonConsultaVeiculo.setText("Consultar Veiculo");
-        ButtonConsultaVeiculo.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCadastrar.setText("Cadastrar Cliente");
+        ButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonConsultaVeiculoActionPerformed(evt);
+                ButtonCadastrarActionPerformed(evt);
+            }
+        });
+
+        ButtonVeiculosDisponiveis.setText("Disponibilidade de Veiculos");
+        ButtonVeiculosDisponiveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonVeiculosDisponiveisActionPerformed(evt);
             }
         });
 
@@ -71,47 +66,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonConsultaVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(ButtonCadastrar)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonAgendar)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonConsultaVeiculo)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButtonAgendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonVeiculosDisponiveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                    .addComponent(ButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 68, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(ButtonAgendar)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonCadastrar)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonVeiculosDisponiveis)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonSair)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,7 +101,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jInternalFrame1)
+                .addContainerGap())
         );
 
         pack();
@@ -142,18 +123,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
 
+    private void ButtonVeiculosDisponiveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVeiculosDisponiveisActionPerformed
+        MenuVeiculos mv = new MenuVeiculos();
+        if(ButtonVeiculosDisponiveis.isEnabled()){
+            mv.setVisible(true);
+        }
+    }//GEN-LAST:event_ButtonVeiculosDisponiveisActionPerformed
+
     private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
         if(ButtonSair.isEnabled()){
             System.exit(0);
         }
     }//GEN-LAST:event_ButtonSairActionPerformed
-
-    private void ButtonConsultaVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultaVeiculoActionPerformed
-        MenuVeiculos mv = new MenuVeiculos();
-        if(ButtonConsultaVeiculo.isEnabled()){
-            mv.setVisible(true);
-        }
-    }//GEN-LAST:event_ButtonConsultaVeiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,20 +153,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal().setVisible(true);
+                new MenuInicial().setVisible(true);
             }
         });
     }
@@ -193,9 +174,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAgendar;
     private javax.swing.JButton ButtonCadastrar;
-    private javax.swing.JButton ButtonConsultaVeiculo;
     private javax.swing.JButton ButtonSair;
+    private javax.swing.JButton ButtonVeiculosDisponiveis;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
