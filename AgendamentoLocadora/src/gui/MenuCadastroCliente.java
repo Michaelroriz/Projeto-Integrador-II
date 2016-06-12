@@ -7,7 +7,7 @@ package gui;
 
 import Cadastro.CadastroCliente;
 import com.toedter.calendar.JDateChooser;
-import database.ClienteDAO;
+import database.CadastroClienteDAO;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -381,8 +381,7 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
 
    // static Cadastro.CadastroCliente ccl = new CadastroCliente(null, null, null, null, null, null, null, null, null, null);
     
-    static database.ClienteDAO e = new database.ClienteDAO();
-
+    
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         //Se botão Cancelar for selecionada, dados serão apagados
         if (ButtonCancelar.isEnabled()) {
@@ -485,9 +484,9 @@ public class MenuCadastroCliente extends javax.swing.JFrame {
             cliente.setCidade(textCidade.getText());
             cliente.setUf(textUF.getText());
             
-            ClienteDAO dao = new ClienteDAO();
+            CadastroClienteDAO dao = new CadastroClienteDAO();
             dao.CadastroClientes(cliente);
-            //JOptionPane.showMessageDialog(null, "Cliente inserido com sucesso");
+            JOptionPane.showMessageDialog(null, "Cliente inserido com sucesso");
             
             
             //fecha a janela de Cadastro e volta para o menu principal          
