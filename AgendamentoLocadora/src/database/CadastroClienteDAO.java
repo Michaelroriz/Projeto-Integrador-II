@@ -7,8 +7,6 @@ package database;
 
 import Cadastro.CadastroCliente;
 import static database.Conexao.con;
-
-import gui.MenuPrincipal;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -17,14 +15,31 @@ import javax.swing.JOptionPane;
  *
  * @author sergio
  */
-public class CadastroClienteDAO {            
+public class CadastroClienteDAO {     
+    private Conexao conexao;
+    
+    private String nome;
+    private String cpf;
+    private Date datanascimento;
+    private String sexo;
+    private String endereco;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String uf;
+    
+    
+    public CadastroClienteDAO(){
+        this.conexao = new Conexao();
+    }
     
     
     public void CadastroClientes(CadastroCliente cliente){
         //Realizar conexão ao BD
         Conexao.conectar();
             String sql = "insert into CLIENTE (nome,cpf,datanascimento,sexo,endereco,complemento,bairro,cidade,uf) values (?,?,?,?,?,?,?,?,?)";
-        try {
+            try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
@@ -37,14 +52,18 @@ public class CadastroClienteDAO {
             stmt.setString(9, cliente.getUf());
             
             stmt.execute();
-            stmt.close();
-            JOptionPane.showMessageDialog(null, "ClienteInserido com sucesso");
-            //JOptionPane.showInternalConfirmDialog(null, "Deseja incluir o registro?");
+            JOptionPane.showInternalConfirmDialog(null, "Deseja incluir o registro?");
+            
+            JOptionPane.showMessageDialog(null, "Cliente Inserido com sucesso");
+            
             
         } catch (Exception e) {
-           
-            JOptionPane.showMessageDialog(null, "Erro na inclusão");
+            
+            throw new RuntimeException(e);
+            
+       
         }
+            
             
     }
     
